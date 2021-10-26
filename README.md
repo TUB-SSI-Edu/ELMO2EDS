@@ -1,16 +1,20 @@
 # elmo-converter
 
-The goal of this project is to convert a XML file of a german secondary education diploma ("Zeugnis der Allgemeinen Hochschulreife" / Abitur) into a [JSON-LD](https://json-ld.org/) [verifiable educational credential](https://w3c-ccg.github.io/vc-ed-models/#approaches) that can be issued via e.g. [AcaPy](https://github.com/hyperledger/aries-cloudagent-python/blob/main/demo/AriesOpenAPIDemo.md) using [golang](https://golang.org/).
+The goal of this project is to convert a XML file of a german secondary education diploma (_"Zeugnis der Allgemeinen Hochschulreife"_ / _Abitur_) into a [JSON-LD](https://json-ld.org/) [verifiable educational credential](https://w3c-ccg.github.io/vc-ed-models/#approaches) that can be issued via e.g. [AcaPy](https://github.com/hyperledger/aries-cloudagent-python/blob/main/demo/AriesOpenAPIDemo.md) using [golang](https://golang.org/).
 
 Something similar has been achieved by the [ovrhd.nl](https://ovrhd.nl) group with an API that can be found at https://duo.ovrhd.nl/api/elmo/sovrhd but this approach is not quite sofisticated enough for our needs.
 
 <details>
 <summary>example api call</summary>
-<pre><code>curl -d "example_elmo_emrex.xml" -H "Content-Type:text/plain;charset=utf-8" -X POST https://duo.ovrhd.nl/api/elmo/sovrhd</code></pre>
+
+```sh
+curl -d "example_elmo_emrex.xml" -H "Content-Type:text/plain;charset=utf-8" -X POST https://duo.ovrhd.nl/api/elmo/sovrhd
+```
+
 example response:
-<pre>
- ```json
- [
+
+```json
+[
    {
      "issuer": "did:dock:5D7Zy8Xh7s4SL61T6c5UoyzBFubNFq4ED4tQGsCJRR7ostxs",
      "@context": [
@@ -38,16 +42,50 @@ example response:
      }
    }
  ]
- ```
-</pre>
+```
 </details>
+
+## Building and Execution
+
+### Prerequisites
+- golang 1.17 ([install](https://golang.org/doc/install))
+- xml file of _Abitur_ data in the emrex/emlo format
+
+Clone project
+
+### Building
+
+```sh
+git clone https://git.snet.tu-berlin.de/blockchain/idunion/elmo-converter.git
+```
+Download dependencies
+```
+cd elmo-converter/src
+go mod download 
+```
+
+build project to output directory
+```
+go build -o ../bin/
+```
+
+If you only want to test the converter use `go run ./elmo-converter` and all build files will be temporary. See below for running commands. <br>
+You can also use ``go install ./elmo-converter`` to build and store the executables in your go directory 
+and be able to access them systemwide
+
+### Running
+
+Navigate to the directory where you build your executables to and make sure your elmo xml file is stored in the same direectory.
+````
+./elmo-converter <path_to_xml_file>
+````
 
 ## Additional details
 ### Input file
 The converter should be given an XML file attached to PDF files issued by the [Bundesdruckerei](https://www.bundesdruckerei.de/) containing  educational achievments in the [elmo/emrex standard](https://github.com/emrex-eu/elmo-schemas).
 
 ### Output file
-.The convert should output a [JSON-LD](https://json-ld.org/) wich can be issued as a verifiable credential in an SSI context of the hyperledger aries network.
+The convert should output a [JSON-LD](https://json-ld.org/) wich can be issued as a verifiable credential in an SSI context of the hyperledger aries network.
 
 A first example outline can be found [here](https://github.com/pherbke/schoolDiploma).
 

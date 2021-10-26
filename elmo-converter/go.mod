@@ -1,4 +1,4 @@
-module git.snet.tu-berlin.de/blockchain/idunion/elmo-converter/src
+module git.snet.tu-berlin.de/blockchain/idunion/elmo-converter/elmo-converter
 
 go 1.17
 
