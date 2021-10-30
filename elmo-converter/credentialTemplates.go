@@ -11,7 +11,7 @@ type Identifier struct {
 	Value string `xml:",innerxml"`
 }
 
-type Title struct {
+type Text struct {
 	Lang  string `xml:"lang,attr"`
 	Value string `xml:",innerxml"`
 }
@@ -19,7 +19,7 @@ type Title struct {
 type Issuer struct {
 	Country    string     `xml:"country"`
 	Identifier Identifier `xml:"identifier"`
-	Title      Title      `xml:"title"`
+	Titles     []Text     `xml:"title"`
 	URL        string     `xml:"url"`
 }
 
@@ -33,9 +33,33 @@ type Learner struct {
 	Gender       int          `xml:"gender"`
 }
 
+type Credit struct {
+	Scheme string  `xml:"scheme"`
+	Value  float32 `xml:"value"`
+}
+
+type Level struct {
+	Type        string  `xml:"type"`
+	Description Text    `xml:"description"`
+	Value       float32 `xml:"value"`
+}
+
+type LearningOpportunityInstance struct {
+	Credits []Credit `xml:"credit"`
+	Level   Level    `xml:"level"`
+}
+
+type LearningOpportunitySpecification struct {
+	Titles                      []Text                             `xml:"title,omitempty"`
+	Type                        string                             `xml:"type,omitempty"`
+	Description                 Text                               `xml:"description,omitempty"`
+	LearningOpportunityInstance LearningOpportunityInstance        `xml:"specifies>learningOpportunityInstance,omitempty"`
+	Parts                       []LearningOpportunitySpecification `xml:"hasPart>learningOpportunitySpecification,omitempty"`
+}
+
 type Report struct {
-	Issuer Issuer `xml:"issuer"`
-	// TODO add learning opportunities
+	Issuer                           Issuer                             `xml:"issuer"`
+	LearningOpportunitySpecification []LearningOpportunitySpecification `xml:"learningOpportunitySpecification"`
 }
 type EducationCredential interface {
 	ToJson() string
@@ -51,7 +75,7 @@ type Abitur struct {
 func (a *Abitur) ToJson() string {
 	data, err := json.MarshalIndent(a, "", "  ")
 	if err != nil {
-		log.Fatalf("errpr while encoding to json")
+		log.Fatalf("error while encoding to json")
 		return ""
 	}
 	return string(data)

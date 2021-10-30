@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/xml"
 	"github.com/antchfx/xmlquery"
+	"io/ioutil"
 	"log"
 	"os"
 )
@@ -57,7 +58,7 @@ func main() {
 
 	doc := loadXML(xmlPath)
 	// print current node data
-	log.Printf("reading of %s successfull!", doc.Current().InnerText())
+	log.Printf("reading of %s successfull!", doc.Current().Data)
 
 	// --------------
 	// 		QUERY
@@ -69,9 +70,12 @@ func main() {
 	credential := parseXMLToCredential(doc)
 
 	// parse to JSON
-	json := credential.ToJson()
+	jsonString := credential.ToJson()
 
 	// log result
-	log.Printf("parsing successful: \n%s", json)
+	log.Printf("parsing successful: \n%s", jsonString)
+
+	// write to File
+	ioutil.WriteFile("credential.json", []byte(jsonString), os.ModePerm)
 
 }
