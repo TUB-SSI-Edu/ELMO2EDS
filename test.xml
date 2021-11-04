@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<foxydata>
+<store_version>2.0</store_version>
+<result>ERROR</result>
+<messages>
+<context>2008</context>
+<message>Transaction Not Found (transaction_id:25)</message>
+</messages>
+</foxydata>
