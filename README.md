@@ -49,7 +49,7 @@ example response:
 
 ### Prerequisites
 - golang 1.17 ([install](https://golang.org/doc/install))
-- xml file of _Abitur_ data in the emrex/emlo format
+- xml file in the [emrex/emlo format](https://github.com/emrex-eu/elmo-schemas)
 
 Clone project
 
@@ -82,7 +82,16 @@ Navigate to the directory where you build your executables to and make sure your
 
 ## Additional details
 ### Input file
-The converter should be given an XML file attached to PDF files issued by the [Bundesdruckerei](https://www.bundesdruckerei.de/) containing  educational achievments in the [elmo/emrex standard](https://github.com/emrex-eu/elmo-schemas).
+
+The converter should be given an XML file attached to PDF files issued by 
+the [Bundesdruckerei](https://www.bundesdruckerei.de/) containing  educational achievements in the [elmo/emrex standard](https://github.com/emrex-eu/elmo-schemas).
+
+The type of the document is determined by the Value at XPath `elmo > report > learningOpportunitySpecification > title` with the attribute `xml:lang="en"`. 
+Currently supported type are:
+
+- Abitur
+
+If no value is given a more general json file is created wich is probably less suitable for credential creation.
 
 ### Output file
 The convert should output a [JSON-LD](https://json-ld.org/) wich can be issued as a verifiable credential in an SSI context of the hyperledger aries network.
@@ -91,7 +100,8 @@ A first example outline can be found [here](https://github.com/pherbke/schoolDip
 
 ## Problems
 Not all data required for a verifiable credential exists in the input file. This data has to be collected to successfully convert.
-
+Golang is a statically typed language. Creating dynamic data types depending on the input is not trivial. 
+That's why the output formats have to be precisely defined.
 ### optional quality of life features
 - [ ] read xlm directly from pdf document
 - [ ] enclose converter into a websevice with REST API
