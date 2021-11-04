@@ -100,8 +100,58 @@ A first example outline can be found [here](https://github.com/pherbke/schoolDip
 
 ## Problems
 Not all data required for a verifiable credential exists in the input file. This data has to be collected to successfully convert.
+
+### Switch from Golang to NodeJS
 Golang is a statically typed language. Creating dynamic data types depending on the input is not trivial. 
-That's why the output formats have to be precisely defined.
+That's why the output formats have to be precisely defined. That leads to a lot of clutter and a less readable and usable parsing result. Here an example with identifiers:
+
+<details>
+<summary>example</summary>
+In Go we needed to have a list of identifiers to collect all potentially given formats of indetifiers and each would be an object with type and value
+
+```json
+learner:{
+  identifiers:[
+    identifier:{
+      type: "ISCD",
+      value: "12345678"
+    },
+    identifier:{
+      type: "Matrikelnummer",
+      value: "987654"
+    },
+    identifier:{
+      type: "Student-ID",
+      value: "456789"
+    },
+  ]
+}
+
+```
+
+wich idealy would be formated like this:
+```json
+learner:{
+  identifierISCD : "12345678",
+  identifierMatrNr : "987654",
+  identifierStId: "456789"
+}
+```
+or 
+```json
+learner:{
+  identifiers:[
+    ISCD : "12345678",
+    MatrNr : "987654",
+    StudentId: "456789"
+  ]
+}
+```
+
+Further would any field, that is expected but not found filled with a null value wich results in even more clutter.
+An example can be found in the `credential.js`
+</details>
+
 ### optional quality of life features
 - [ ] read xlm directly from pdf document
 - [ ] enclose converter into a websevice with REST API
