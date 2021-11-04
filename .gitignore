@@ -1,5 +1,6 @@
 *.log
 sig.xml
+package-lock.json
 
 # node-waf configuration
 .lock-wscript
