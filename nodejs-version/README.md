@@ -11,5 +11,5 @@ node main.js
 then you can test with
 
 ```
-curl -X GET localhost:8081/api/convert/test
+curl -X GET http://localhost:8081/api/convert/test
 ```
