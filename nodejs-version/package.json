@@ -1,0 +1,26 @@
+{
+  "name": "elmo-converter",
+  "version": "1.0.0",
+  "description": "web service that converts emrex/elmo xml files into json-ld verifiable credentials",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "live": "nodemon main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.snet.tu-berlin.de/blockchain/idunion/elmo-converter"
+  },
+  "keywords": [
+    "emlo",
+    "emrex",
+    "verifiable",
+    "credential"
+  ],
+  "author": "Leon Rohmann",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  }
+}
