@@ -39,7 +39,7 @@ router.get("/convert/:fileName", (req, res, next) => {
     .then((data, error) => {
         if (error) {
             console.log(error)
-            return
+            res.send("There was an error parsing your file:"+error)
         }
         if (error) {console.log(error)}
         res.set("Content-Type", "application/json")
@@ -50,8 +50,5 @@ router.get("/convert/:fileName", (req, res, next) => {
 router.post('/convert', (req, res, next) => {
     res.send("Not yet implemented")
 })
-
-
-
 
 module.exports = router;

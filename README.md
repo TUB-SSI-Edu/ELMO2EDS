@@ -1,6 +1,6 @@
 # elmo-converter
 
-The goal of this project is to convert a XML file of a german secondary education diploma (_"Zeugnis der Allgemeinen Hochschulreife"_ / _Abitur_) into a [JSON-LD](https://json-ld.org/) [verifiable educational credential](https://w3c-ccg.github.io/vc-ed-models/#approaches) that can be issued via e.g. [AcaPy](https://github.com/hyperledger/aries-cloudagent-python/blob/main/demo/AriesOpenAPIDemo.md) using [golang](https://golang.org/).
+The goal of this project is to convert a XML file of a german secondary education diploma (_"Zeugnis der Allgemeinen Hochschulreife"_ / _Abitur_) into a [JSON-LD](https://json-ld.org/) [verifiable educational credential](https://w3c-ccg.github.io/vc-ed-models/#approaches) that can be issued via e.g. [AcaPy](https://github.com/hyperledger/aries-cloudagent-python/blob/main/demo/AriesOpenAPIDemo.md).
 
 Something similar has been achieved by the [ovrhd.nl](https://ovrhd.nl) group with an API that can be found at https://duo.ovrhd.nl/api/elmo/sovrhd but this approach is not quite sofisticated enough for our needs.
 
@@ -45,15 +45,23 @@ example response:
 ```
 </details>
 
-## Building and Execution
+---
 
-### Prerequisites
+### First Progress using Golang and switch to NodeJS 
+
+<details>
+
+<summary>earlier golang documentation</summary>
+
+### Building and Execution
+
+#### Prerequisites
 - golang 1.17 ([install](https://golang.org/doc/install))
 - xml file in the [emrex/emlo format](https://github.com/emrex-eu/elmo-schemas)
 
 Clone project
 
-### Building
+#### Building
 
 ```sh
 git clone https://git.snet.tu-berlin.de/blockchain/idunion/elmo-converter.git
@@ -73,33 +81,13 @@ If you only want to test the converter use `go run ./elmo-converter` and all bui
 You can also use ``go install ./elmo-converter`` to build and store the executables in your go directory 
 and be able to access them systemwide
 
-### Running
+#### Running
 
 Navigate to the directory where you build your executables to and make sure your elmo xml file is stored in the same direectory.
 ````
 ./elmo-converter <path_to_xml_file>
 ````
-
-## Additional details
-### Input file
-
-The converter should be given an XML file attached to PDF files issued by 
-the [Bundesdruckerei](https://www.bundesdruckerei.de/) containing  educational achievements in the [elmo/emrex standard](https://github.com/emrex-eu/elmo-schemas).
-
-The type of the document is determined by the Value at XPath `elmo > report > learningOpportunitySpecification > title` with the attribute `xml:lang="en"`. 
-Currently supported type are:
-
-- Abitur
-
-If no value is given a more general json file is created wich is probably less suitable for credential creation.
-
-### Output file
-The convert should output a [JSON-LD](https://json-ld.org/) wich can be issued as a verifiable credential in an SSI context of the hyperledger aries network.
-
-A first example outline can be found [here](https://github.com/pherbke/schoolDiploma).
-
-## Problems
-Not all data required for a verifiable credential exists in the input file. This data has to be collected to successfully convert.
+</details>
 
 ### Switch from Golang to NodeJS
 Golang is a statically typed language. Creating dynamic data types depending on the input is not trivial. 
@@ -152,7 +140,65 @@ Further would any field, that is expected but not found filled with a null value
 An example can be found in the `credential.js`
 </details>
 
+--- 
+
+### Prerequisites
+- developed with NodeJS v12.21.0 ([install](https://nodejs.org))
+- xml file in the [emrex/emlo format](https://github.com/emrex-eu/elmo-schemas)
+
+### Building and Running
+
+Clone project:
+```sh
+git clone https://git.snet.tu-berlin.de/blockchain/idunion/elmo-converter.git
+```
+Download dependencies
+```sh
+cd elmo-converter/node-version
+npm install
+```
+
+run `main.js`
+````
+node main.js
+````
+
+This will start the server on localhost on port 8081.
+
+## API (wip)
+The service comes with a REST-API with a following routes all reachable under `/api/`:
+
+| Route         | Method      | description |
+| :---         | :---:    | ---:          |
+| `/api/print/<filename>`      | GET | returns the raw XML-to-JS object parsed from the `<filename>.xml` in the root directory of the service as `JSON` - _usefull for debugging purposes_ |
+| `/api/convert/<filename>`       | GET  | returns the the parsing attempt of the `<filename>.xml` in the root directory of the service or any occuring errors|
+| `/api/convert`       | POST  | send XML via POST and recieve converted JSON - _not yet implemented_|
+
+
+## Additional details
+### Input file
+
+The converter should be given an XML file attached to PDF files issued by 
+the [Bundesdruckerei](https://www.bundesdruckerei.de/) containing  educational achievements in the [elmo/emrex standard](https://github.com/emrex-eu/elmo-schemas).
+
+The type of the document is determined by the Value at XPath `elmo > report > learningOpportunitySpecification > title` with the attribute `xml:lang="en"`. 
+Currently supported type are:
+
+- Abitur
+
+If no value is given a more general json file is created wich is probably less suitable for credential creation.
+
+### Output file
+The convert should output a [JSON-LD](https://json-ld.org/) wich can be issued as a verifiable credential in an SSI context of the hyperledger aries network.
+
+A first example outline can be found [here](https://github.com/pherbke/schoolDiploma).
+
+## Problems
+Not all data required for a verifiable credential exists in the input file. This data has to be collected to successfully convert.
+
+
+
 ### optional quality of life features
 - [ ] read xlm directly from pdf document
-- [ ] enclose converter into a websevice with REST API
+- [x] enclose converter into a websevice with REST API
 
