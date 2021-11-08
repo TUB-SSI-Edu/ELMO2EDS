@@ -163,7 +163,13 @@ run `main.js`
 node main.js
 ````
 
-This will start the server on localhost on port 8081.
+This will start the server on http://localhost:8081/.
+
+Test with:
+
+```sh
+curl --data-binary @<filename> POST http://localhost:8081/api/convert
+```
 
 ## API (wip)
 The service comes with a REST-API with a following routes all reachable under `/api/`:
@@ -195,8 +201,6 @@ A first example outline can be found [here](https://github.com/pherbke/schoolDip
 
 ## Problems
 Not all data required for a verifiable credential exists in the input file. This data has to be collected to successfully convert.
-
-
 
 ### optional quality of life features
 - [ ] read xlm directly from pdf document

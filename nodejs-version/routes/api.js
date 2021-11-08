@@ -1,8 +1,9 @@
 // path: api/
 const express = require('express')
 const router = express.Router()
+
+const xmlparser = require('express-xml-bodyparser');
 const fs = require('fs');
-const { send } = require('process');
 const xml2js = require('xml2js');
 const credentialParser = require('../utils').parseCredential
 
@@ -41,14 +42,21 @@ router.get("/convert/:fileName", (req, res, next) => {
             console.log(error)
             res.send("There was an error parsing your file:"+error)
         }
-        if (error) {console.log(error)}
         res.set("Content-Type", "application/json")
         res.send(JSON.stringify(credentialParser(data)))
     })
 })
 
-router.post('/convert', (req, res, next) => {
-    res.send("Not yet implemented")
+router.post('/convert', xmlparser({trim: false, explicitArray: false}), (req, res, next) => {
+    XMLParser.parseStringPromise(req.body)
+    .then((data, error) => {
+        if (error) {
+            console.log(error)
+            res.send("There was an error parsing your file:"+error)
+        }
+        res.set("Content-Type", "application/json")
+        res.send(JSON.stringify(credentialParser(data)))
+    })
 })
 
 module.exports = router;
