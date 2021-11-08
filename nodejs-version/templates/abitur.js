@@ -50,8 +50,18 @@ class Module {
     }
 }
 
-class ForeignLangauge {
-
+class ForeignLanguage {
+    constructor(languageLOS){
+        this.courseSubject = languageLOS.title._
+        this.level = languageLOS.specifies.learningOpportunityInstance.resultLabel
+    }
 }
 
-module.exports = {Issuer, CredentialSubject, Module, ForeignLangauge}
+class Examination {
+    constructor(examLOS){
+        this.courseSubject = examLOS.title._
+    }
+}
+
+
+module.exports = {Issuer, CredentialSubject, Module, ForeignLanguage, Examination}

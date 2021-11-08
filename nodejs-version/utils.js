@@ -28,11 +28,21 @@ function parseCredential(xml){
 
     // ACHIEVEMENTS
     cred.achievements = []
-    // TODO: maybe make achiements more modular
-    const qPhase = LOS.hasPart[0].learningOpportunitySpecification
-    const modules = qPhase.hasPart
-    let learningAchievements = modules.map(element => new template.Module(element.learningOpportunitySpecification));
+    // TODO: maybe make achievements more modular
+    let qPhase = LOS.hasPart[0].learningOpportunitySpecification
+    let learningAchievements = qPhase.hasPart.map(element => new template.Module(element.learningOpportunitySpecification));
     cred.achievements.push({learningAchievements : learningAchievements})
+
+
+    let exams = LOS.hasPart[1].learningOpportunitySpecification
+    exams = exams.hasPart.map(element => new template.Examination(element.learningOpportunitySpecification));
+    cred.achievements.push({finalExaminations : exams})
+
+    let foreignLang = LOS.hasPart[2].learningOpportunitySpecification
+    foreignLang = foreignLang.hasPart.map(element => new template.ForeignLanguage(element.learningOpportunitySpecification));
+    cred.achievements.push({foreignLanguages : foreignLang})
+
+
     console.log(cred)
     return cred
 }
