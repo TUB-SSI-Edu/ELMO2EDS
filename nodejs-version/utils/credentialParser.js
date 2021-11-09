@@ -1,12 +1,6 @@
 
 
 // maybe use xPath query for XML package instead of hardcoding every path
-
-// Abitur classes - to be exported as swappable template
-
-
-
-
 function parseCredential(xml){
     const elmo = xml.elmo
     const LOS = elmo.report.learningOpportunitySpecification
@@ -14,13 +8,14 @@ function parseCredential(xml){
     cred = {}
 
     const docType = elmo.report.learningOpportunitySpecification.title._
-    const template = require('./templates/'+docType.toLowerCase())
+    const template = require('../templates/'+docType.toLowerCase())
     console.log(template)
     // ISSUER
     cred.issuer = new template.Issuer(elmo.report.issuer, LOI.level)
 
-    // date
-    cred.issuanceDate = elmo.generatedDate
+    // date 
+    cred.issuanceDate = elmo.issueDate
+    cred.generatedDate = elmo.generatedDate
 
     // CREDENTIAL SUBJECT
     cred.credentialSubject = new template.CredentialSubject(elmo.learner)
@@ -28,7 +23,7 @@ function parseCredential(xml){
 
     // ACHIEVEMENTS
     cred.achievements = []
-    // TODO: maybe make achievements more modular
+    // TODO: maybe make achievements more modular for other credential types
     let qPhase = LOS.hasPart[0].learningOpportunitySpecification
     let learningAchievements = qPhase.hasPart.map(element => new template.Module(element.learningOpportunitySpecification));
     cred.achievements.push({learningAchievements : learningAchievements})
@@ -47,20 +42,4 @@ function parseCredential(xml){
     return cred
 }
 
-// if not iterable do only to single objetc; if iterable to every item
-function assertArray(obj){
-    if (obj instanceof Array){
-        return obj;
-    }
-    return [obj]
-}
-
-function parseLangText(type, xml, target){
-    if (typeof xml[type] == "undefined"){return}
-    for (const instance of assertArray(xml[type])) {
-        target[type+instance.$["xml:lang"].toUpperCase()] = instance._
-    }
-}
-
-
-module.exports = {parseCredential, parseLangText, assertArray}
+module.exports = parseCredential
