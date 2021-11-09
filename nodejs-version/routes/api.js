@@ -5,7 +5,7 @@ const router = express.Router()
 const xmlparser = require('express-xml-bodyparser');
 const fs = require('fs');
 const xml2js = require('xml2js');
-const credentialParser = require('../utils').parseCredential
+const credentialParser = require('../utils/credentialParser') 
 
 const parseOptions = {
     explicitArray: false,
@@ -48,6 +48,7 @@ router.get("/convert/:fileName", (req, res, next) => {
 })
 
 router.post('/convert', xmlparser({trim: false, explicitArray: false}), (req, res, next) => {
+    console.log(req.body)
     XMLParser.parseStringPromise(req.body)
     .then((data, error) => {
         if (error) {
