@@ -65,7 +65,7 @@ router.post("/*", xmlparser({
 
 router.post('/convert', (req, res, next) => {
             let cred = credentialParser(req.body)
-            res.send(JSON.stringify(cred))
+            res.send(JSON.stringify(cred, null, 4))
 })
 
 module.exports = router;

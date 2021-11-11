@@ -1,6 +1,6 @@
 # elmo-converter
 
-The goal of this project is to convert a XML file of a german secondary education diploma (_"Zeugnis der Allgemeinen Hochschulreife"_ / _Abitur_) into a [JSON-LD](https://json-ld.org/) [verifiable educational credential](https://w3c-ccg.github.io/vc-ed-models/#approaches) that can be issued via e.g. [AcaPy](https://github.com/hyperledger/aries-cloudagent-python/blob/main/demo/AriesOpenAPIDemo.md).
+The goal of this project is to convert a XML file of a german upper secondary school diploma (_"Zeugnis der Allgemeinen Hochschulreife"_ / _Abitur_) into a [JSON-LD](https://json-ld.org/) [verifiable educational credential](https://w3c-ccg.github.io/vc-ed-models/#approaches) that can be issued via e.g. [AcaPy](https://github.com/hyperledger/aries-cloudagent-python/blob/main/demo/AriesOpenAPIDemo.md).
 
 Something similar has been achieved by the [ovrhd.nl](https://ovrhd.nl) group with an API that can be found at https://duo.ovrhd.nl/api/elmo/sovrhd but this approach is not quite sofisticated enough for our needs.
 
