@@ -47,17 +47,16 @@ router.get("/convert/:fileName", (req, res, next) => {
     })
 })
 
-router.post('/convert', xmlparser({trim: false, explicitArray: false}), (req, res, next) => {
+router.post('/convert', xmlparser({
+    explicitArray: false,
+    normalize: false,
+    normalizeTags: false,
+    trim: true
+}), (req, res, next) => {
     console.log(req.body)
-    XMLParser.parseStringPromise(req.body)
-    .then((data, error) => {
-        if (error) {
-            console.log(error)
-            res.send("There was an error parsing your file:"+error)
-        }
-        res.set("Content-Type", "application/json")
-        res.send(JSON.stringify(credentialParser(data)))
-    })
+
+    res.set("Content-Type", "application/json")
+    res.send(JSON.stringify(credentialParser(req.body), null, 4))
 })
 
 module.exports = router;
