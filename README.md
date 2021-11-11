@@ -168,7 +168,7 @@ This will start the server on http://localhost:8081/.
 Test with:
 
 ```sh
-curl --data-binary @<filename> POST http://localhost:8081/api/convert
+curl -d @file.xml -H "Content-Type: application/xml" localhost:8081/api/convert
 ```
 
 ## API (wip)

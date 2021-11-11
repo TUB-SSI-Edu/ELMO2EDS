@@ -9,12 +9,13 @@ const apiRouter = require('./routes/api')
 
 // logger and format middleware
 app.use(logger('dev'))
+
 app.use(
   express.urlencoded({
     extended: true
   })
 )
-app.use(express.json())
+//app.use(express.json())
 
 // APP
 app.use('/api', apiRouter)

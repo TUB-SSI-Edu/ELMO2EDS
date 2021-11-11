@@ -14,4 +14,8 @@ function parseLangText(type, xml, target){
     }
 }
 
-module.exports = {assertArray, parseLangText}
+function isEmpty(obj) {  
+    return Object.keys(obj).length === 0;
+}
+
+module.exports = {assertArray, parseLangText, isEmpty}

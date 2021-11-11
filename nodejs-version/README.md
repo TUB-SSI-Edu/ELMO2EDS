@@ -10,6 +10,6 @@ node main.js
 
 then you can test with
 
-```
-curl -X GET http://localhost:8081/api/convert/test
+```sh
+curl -d @file.xml -H "Content-Type: application/xml" localhost:8081/api/convert
 ```

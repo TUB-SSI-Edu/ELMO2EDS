@@ -1,5 +1,6 @@
 // path: api/
 const express = require('express')
+const utils = require('../utils/helper')
 const router = express.Router()
 
 const xmlparser = require('express-xml-bodyparser');
@@ -47,16 +48,24 @@ router.get("/convert/:fileName", (req, res, next) => {
     })
 })
 
-router.post('/convert', xmlparser({
-    explicitArray: false,
+// parse and check if empty
+router.post("/*", xmlparser({
+    trim: false, 
     normalize: false,
-    normalizeTags: false,
-    trim: true
-}), (req, res, next) => {
-    console.log(req.body)
+    normalizeTags: false, 
+    explicitArray: false
+    }),(req,res,next) => {
+    console.log(utils.isEmpty(req.body))
+    if (utils.isEmpty(req.body)){
+        res.send("no file recieved - please post valid xml file")
+    } else {
+        next()
+    }
+})
 
-    res.set("Content-Type", "application/json")
-    res.send(JSON.stringify(credentialParser(req.body), null, 4))
+router.post('/convert', (req, res, next) => {
+            let cred = credentialParser(req.body)
+            res.send(JSON.stringify(cred))
 })
 
 module.exports = router;
