@@ -25,13 +25,19 @@ class CredentialSubject {
         this.degree = {}
     }
 
-    addDegree(LOS, credits) {
-        utils.parseLangText("title", LOS, this.degree)
-        utils.parseLangText("description", LOS, this.degree)
-        for (const credit of utils.assertArray(credits)) {
-            this.degree["score"+credit.scheme.toUpperCase()] = credit.value
-        }
+    addDegree(learnerLOS, credits) {
+        this.degree = new Degree(learnerLOS, credits)
     }   
+}
+
+class Degree {
+    constructor(learnerLOS, credits){
+        utils.parseLangText("title", learnerLOS, this)
+        utils.parseLangText("description", learnerLOS, this)
+        for (const credit of utils.assertArray(credits)) {
+            this["score"+credit.scheme.toUpperCase()] = credit.value
+        }
+    }
 }
 
 class Module {
@@ -52,14 +58,33 @@ class Module {
 
 class ForeignLanguage {
     constructor(languageLOS){
-        this.courseSubject = languageLOS.title._
+        utils.parseLangText("title", languageLOS, this)
         this.level = languageLOS.specifies.learningOpportunityInstance.resultLabel
     }
 }
 
 class Examination {
     constructor(examLOS){
-        this.courseSubject = examLOS.title._
+        utils.parseLangText("title", examLOS, this)
+        this.components = this.addComponents(examLOS.hasPart)
+    } 
+    addComponents(components){
+        let res = []
+        for (const component of utils.assertArray(components)) {
+            res.push(new ExaminationComponent(component.learningOpportunitySpecification))
+        }
+        return res
+    }
+}
+
+class ExaminationComponent {
+    constructor(componentLOS){
+        console.log(componentLOS)
+        // dont need title if we have type
+        //utils.parseLangText("title", componentLOS, this)
+        let title = componentLOS["title"]._
+        this.type = title.split(" ")[2]
+        this.score = componentLOS.specifies.learningOpportunityInstance.credit.value
     }
 }
 
