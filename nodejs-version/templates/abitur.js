@@ -79,7 +79,6 @@ class Examination {
 
 class ExaminationComponent {
     constructor(componentLOS){
-        console.log(componentLOS)
         // dont need title if we have type
         //utils.parseLangText("title", componentLOS, this)
         let title = componentLOS["title"]._

@@ -22,7 +22,7 @@ function parseCredential(xml){
     // CREDENTIAL SUBJECT
     let subjectData = new template.CredentialSubject(elmo.learner)
     subjectData.addDegree(LOS, LOI.credit)
-    cred.credentialSubject = Object.assign(cred.issuer, subjectData)
+    cred.credentialSubject = Object.assign(cred.credentialSubject, subjectData)
 
     // ACHIEVEMENTS
     cred.achievements = []

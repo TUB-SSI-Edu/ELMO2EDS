@@ -1,4 +1,4 @@
-// path: api/
+// path: api/fromXML
 const express = require('express')
 const utils = require('../utils/helper')
 const router = express.Router()
@@ -63,7 +63,12 @@ router.post("/*", xmlparser({
     }
 })
 
-router.post('/convert', (req, res, next) => {
+router.post('/convert/', (req, res, next) => {
+    let cred = credentialParser(req.body)
+    res.send(JSON.stringify(cred, null, 4))
+})
+
+router.post('/convert/verifiableCredential', (req, res, next) => {
             let cred = credentialParser(req.body)
             res.send(JSON.stringify(cred, null, 4))
 })

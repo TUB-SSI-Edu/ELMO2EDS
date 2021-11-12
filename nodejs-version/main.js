@@ -5,7 +5,7 @@ const app = express()
 const port = 8081
 
 // Routes
-const apiRouter = require('./routes/api')
+const apiRouter = require('./routes/fromXML')
 
 // logger and format middleware
 app.use(logger('dev'))
@@ -18,7 +18,7 @@ app.use(
 //app.use(express.json())
 
 // APP
-app.use('/api', apiRouter)
+app.use('/api/xml/', apiRouter)
 
 app.get('/', (req, res) => {
   res.send('This is the emrex/elmo converter. Send XML file via post at /api/convert')
@@ -27,5 +27,5 @@ app.get('/', (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Converter listening at http://localhost:${port}`)
 })

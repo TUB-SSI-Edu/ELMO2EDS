@@ -168,7 +168,7 @@ This will start the server on http://localhost:8081/.
 Test with:
 
 ```sh
-curl -d @file.xml -H "Content-Type: application/xml" localhost:8081/api/convert
+curl -d @test.xml -H "Content-Type: application/xml" http://localhost:8081/api/fromXML/convert/
 ```
 
 ## API (wip)
@@ -176,9 +176,10 @@ The service comes with a REST-API with a following routes all reachable under `/
 
 | Route         | Method      | description |
 | :---         | :---:    | ---:          |
-| `/api/print/<filename>`      | GET | returns the raw XML-to-JS object parsed from the `<filename>.xml` in the root directory of the service as `JSON` - _usefull for debugging purposes_ |
-| `/api/convert/<filename>`       | GET  | returns the the parsing attempt of the `<filename>.xml` in the root directory of the service or any occuring errors|
-| `/api/convert`       | POST  | send XML via POST and recieve converted JSON - _not yet implemented_|
+| `/api/fromXML/convert/<filename>`      | GET | returns the raw XML-to-JS object parsed from the `<filename>.xml` in the root directory of the service as `JSON` - _usefull for debugging purposes_ |
+| `/api/fromXML/convert/`      | POST | returns the pure XML-to-JSON parsed from the XML file send via POST |
+| `/api/fromXML/convert/verifiableCredential`       | POST  | send XML via POST and recieve converted JSON|
+| `/api/fromJSON/...`       |   | reverse operation from above - _not yet impolemented_|
 
 
 ## Additional details
