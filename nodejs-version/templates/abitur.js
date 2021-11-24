@@ -42,7 +42,6 @@ class Degree {
 
 class Module {
     constructor(moduleLOS){
-        console.debug("module:\n",moduleLOS)
         this.courseSubject = moduleLOS.title._
         this.semesterScores = this.parseSemesters(moduleLOS.hasPart)
     }
@@ -50,7 +49,6 @@ class Module {
         let res = {}
         let semCounter = 1
         for (const semester of utils.assertArray(semesters)) {
-            console.debug("sem:\n",JSON.stringify(semester))
             const credit = utils.getKey('learningOpportunitySpecification.specifies.learningOpportunityInstance.credit.value', semester)
             const label = utils.getKey('learningOpportunitySpecification.specifies.learningOpportunityInstance.resultLabel', semester)
             res["semester"+semCounter] = credit ?? label
@@ -91,5 +89,32 @@ class ExaminationComponent {
     }
 }
 
+function handleAchievements(parts){
+    let res = []
+    let qPhaseSpec = parts[0].learningOpportunitySpecification
+    let learningAchievements = qPhaseSpec.hasPart.map(element => new Module(element.learningOpportunitySpecification));
+    const qPhaseScore = qPhaseSpec.specifies.learningOpportunityInstance.credit.value
+    const qPhase = {
+        totalScore: qPhaseScore,
+        courses: learningAchievements
+    }
+    res.push({qualificationPhase : qPhase})
 
-module.exports = {Issuer, CredentialSubject, Module, ForeignLanguage, Examination}
+
+    let examsSpec = parts[1].learningOpportunitySpecification
+    let examsParts = examsSpec.hasPart.map(element => new Examination(element.learningOpportunitySpecification));
+    const examsScore = examsSpec.specifies.learningOpportunityInstance.credit.value
+    const exams = {
+        totalScore: examsScore,
+        examns: examsParts
+    }
+    res.push({finalExaminations : exams})
+
+    let foreignLangSpec = parts[2].learningOpportunitySpecification
+    const foreignLang = foreignLangSpec.hasPart.map(element => new ForeignLanguage(element.learningOpportunitySpecification));
+    res.push({foreignLanguages : foreignLang})
+    return res
+}
+
+
+module.exports = {Issuer, CredentialSubject, Module, ForeignLanguage, Examination, handleAchievements}
