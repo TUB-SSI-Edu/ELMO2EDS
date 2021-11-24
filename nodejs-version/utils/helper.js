@@ -1,6 +1,9 @@
 
 // if not iterable do only to single objetc; if iterable to every item
 function assertArray(obj){
+    if (!obj){
+        return Error('ofject is nullish')
+    }
     if (obj instanceof Array){
         return obj;
     }
@@ -8,7 +11,7 @@ function assertArray(obj){
 }
 
 function parseLangText(type, xml, target){
-    if (typeof xml[type] == "undefined"){return}
+    if (typeof xml[type] == "undefined"){return Error("no such property")}
     for (const instance of assertArray(xml[type])) {
         target[type+instance.$["xml:lang"].toUpperCase()] = instance._
     }

@@ -18,36 +18,6 @@ router.get('/', (req, res, next) => {
     res.send("please post xml file to /api/convert")
 })
 
-router.get('/print/:fileName', (req, res, next) => {
-    let text = fs.readFileSync("../" + req.params.fileName + ".xml", "utf-8") 
-
-    XMLParser.parseStringPromise(text)
-    .then((data, error) => {
-        if (error) {
-            console.log(error)
-            return
-        }
-        if (error) {console.log(error)}
-        res.set("Content-Type", "application/json")
-        res.send(JSON.stringify(data))
-    })
-})
-
-// reads local file :filename and uses that as input
-router.get("/convert/:fileName", (req, res, next) => {
-    let text = fs.readFileSync("../" + req.params.fileName + ".xml", "utf-8") 
-
-    XMLParser.parseStringPromise(text)
-    .then((data, error) => {
-        if (error) {
-            console.log(error)
-            res.send("There was an error parsing your file:"+error)
-        }
-        res.set("Content-Type", "application/json")
-        res.send(JSON.stringify(credentialParser(data)))
-    })
-})
-
 // parse and check if empty
 router.post("/*", xmlparser({
     trim: false, 
@@ -62,14 +32,47 @@ router.post("/*", xmlparser({
     }
 })
 
+
 router.post('/convert/', (req, res, next) => {
     res.send(JSON.stringify(req.body , null, 4))
+})
+
+
+router.get('/convert/:fileName', (req, res, next) => {
+    let text = fs.readFileSync("../" + req.params.fileName + ".xml", "utf-8") 
+
+    XMLParser.parseStringPromise(text)
+    .then((data, error) => {
+        if (error) {
+            console.log(error)
+            return
+        }
+        if (error) {console.log(error)}
+        res.set("Content-Type", "application/json")
+        res.send(JSON.stringify(data))
+    })
 })
 
 router.post('/convert/verifiableCredential', (req, res, next) => {
     let cred = credentialParser(req.body)
     res.send(JSON.stringify(cred, null, 4))
 })
+
+// reads local file :filename and uses that as input
+router.get("/convert/verifiableCredential/:fileName", (req, res, next) => {
+    let text = fs.readFileSync("../" + req.params.fileName + ".xml", "utf-8") 
+
+    XMLParser.parseStringPromise(text)
+    .then((data, error) => {
+        if (error) {
+            console.log(error)
+            res.send("There was an error parsing your file:"+error)
+        }
+        res.set("Content-Type", "application/json")
+        res.send(JSON.stringify(credentialParser(data)))
+    })
+})
+
 
 // convertsion with XPath - to replace the current parsing when done
 
