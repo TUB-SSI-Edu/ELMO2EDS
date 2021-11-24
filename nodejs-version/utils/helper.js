@@ -20,12 +20,13 @@ function parseLangText(type, xml, target){
 function isEmpty(obj) {  
     return Object.keys(obj).length === 0;
 }
-
+// maybe use ?. JS operator instead
 function getKey(key, obj) {
     return key.split('.').reduce(function(a,b){
       return a && a[b];
     }, obj);
-}/*
+}
+/*
 function find(theObject) {
     var result = null;
     if(theObject instanceof Array) {
