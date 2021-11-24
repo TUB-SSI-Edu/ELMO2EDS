@@ -21,7 +21,7 @@ class Issuer {
 class CredentialSubject {
     constructor(learner){
         this.givenName = learner.givenNames,
-        this.familyName =learner.familyName
+        this.familyName = learner.familyName
         this.degree = {}
     }
 
@@ -42,6 +42,7 @@ class Degree {
 
 class Module {
     constructor(moduleLOS){
+        console.debug("module:\n",moduleLOS)
         this.courseSubject = moduleLOS.title._
         this.semesterScores = this.parseSemesters(moduleLOS.hasPart)
     }
@@ -49,7 +50,10 @@ class Module {
         let res = {}
         let semCounter = 1
         for (const semester of utils.assertArray(semesters)) {
-            res["semester"+semCounter] = semester.learningOpportunitySpecification.specifies.learningOpportunityInstance.credit.value
+            console.debug("sem:\n",JSON.stringify(semester))
+            const credit = utils.getKey('learningOpportunitySpecification.specifies.learningOpportunityInstance.credit.value', semester)
+            const label = utils.getKey('learningOpportunitySpecification.specifies.learningOpportunityInstance.resultLabel', semester)
+            res["semester"+semCounter] = credit ?? label
             semCounter++
         }
         return res

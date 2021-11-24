@@ -55,7 +55,7 @@ router.post("/*", xmlparser({
     normalizeTags: false, 
     explicitArray: false
     }),(req,res,next) => {
-    console.log(utils.isEmpty(req.body))
+    console.log(req.body)
     if (utils.isEmpty(req.body)){
         res.send("no file recieved - please post valid xml file")
     } else {
@@ -64,13 +64,14 @@ router.post("/*", xmlparser({
 })
 
 router.post('/convert/', (req, res, next) => {
+    res.send(JSON.stringify(req.body , null, 4))
+})
+
+router.post('/convert/verifiableCredential', (req, res, next) => {
     let cred = credentialParser(req.body)
     res.send(JSON.stringify(cred, null, 4))
 })
 
-router.post('/convert/verifiableCredential', (req, res, next) => {
-            let cred = credentialParser(req.body)
-            res.send(JSON.stringify(cred, null, 4))
-})
+// convertsion with XPath - to replace the current parsing when done
 
 module.exports = router;

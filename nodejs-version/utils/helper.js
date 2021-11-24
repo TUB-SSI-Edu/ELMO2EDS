@@ -18,4 +18,10 @@ function isEmpty(obj) {
     return Object.keys(obj).length === 0;
 }
 
-module.exports = {assertArray, parseLangText, isEmpty}
+function getKey(key, obj) {
+    return key.split('.').reduce(function(a,b){
+      return a && a[b];
+    }, obj);
+}
+
+module.exports = {assertArray, parseLangText, isEmpty, getKey}

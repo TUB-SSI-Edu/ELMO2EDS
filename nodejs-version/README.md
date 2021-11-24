@@ -11,5 +11,5 @@ node main.js
 then you can test with
 
 ```sh
-curl -d @file.xml -H "Content-Type: application/xml" localhost:8081/api/convert
+curl -d @file.xml -H "Content-Type: application/xml" http://localhost:8081/api/xml/convert
 ```
