@@ -159,16 +159,16 @@ npm install
 ```
 
 run `main.js`
-````
+```sh
 node main.js
-````
+```
 
 This will start the server on http://localhost:8081/.
 
 Test with:
 
 ```sh
-curl -d @test.xml -H "Content-Type: application/xml" http://localhost:8081/api/fromXML/convert/
+curl -d @test.xml -H "Content-Type: application/xml" http://localhost:8081/api/xml/convert/
 ```
 
 ## API (wip)
@@ -176,10 +176,10 @@ The service comes with a REST-API with a following routes all reachable under `/
 
 | Route         | Method      | description |
 | :---         | :---:    | ---:          |
-| `/api/fromXML/convert/<filename>`      | GET | returns the raw XML-to-JS object parsed from the `<filename>.xml` in the root directory of the service as `JSON` - _usefull for debugging purposes_ |
-| `/api/fromXML/convert/`      | POST | returns the pure XML-to-JSON parsed from the XML file send via POST |
-| `/api/fromXML/convert/verifiableCredential`       | POST  | send XML via POST and recieve converted JSON|
-| `/api/fromJSON/...`       |   | reverse operation from above - _not yet impolemented_|
+| `/api/xml/convert/<filename>`      | GET | returns the raw XML-to-JS object parsed from the `<filename>.xml` in the root directory of the service as `JSON` - _usefull for debugging purposes_ |
+| `/api/xml/convert/`      | POST | returns the pure XML-to-JSON parsed from the XML file send via POST |
+| `/api/xml/convert/verifiableCredential`       | POST  | send XML via POST and recieve converted JSON|
+| `/api/json/...`       |   | reverse operation from above - _not yet impolemented_|
 
 
 ## Additional details
@@ -200,10 +200,14 @@ The convert should output a [JSON-LD](https://json-ld.org/) wich can be issued a
 
 A first example outline can be found [here](https://github.com/pherbke/schoolDiploma).
 
+### custom templates
+You can add your own conversion template. Take a look at `templates/_blank.js` for a blank example.
+
 ## Problems
-Not all data required for a verifiable credential exists in the input file. This data has to be collected to successfully convert.
+Not all data required for a verifiable credential exists in the input file. This data has to be collected to successfully convert to that specific format.
 
 ### optional quality of life features
 - [ ] read xlm directly from pdf document
 - [x] enclose converter into a websevice with REST API
+- [ ] implement reverse conversion jsonld -> xml
 

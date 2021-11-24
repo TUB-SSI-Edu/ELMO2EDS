@@ -117,4 +117,4 @@ function handleAchievements(parts){
 }
 
 
-module.exports = {Issuer, CredentialSubject, Module, ForeignLanguage, Examination, handleAchievements}
+module.exports = {Issuer, CredentialSubject, handleAchievements}
