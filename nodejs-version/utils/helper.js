@@ -13,7 +13,7 @@ function assertArray(obj){
 function parseLangText(type, xml, target){
     if (typeof xml[type] == "undefined"){return Error("no such property")}
     for (const instance of assertArray(xml[type])) {
-        target[type+instance.$["xml:lang"].toUpperCase()] = instance._
+        target[type+instance?.$["xml:lang"]?.toUpperCase()] = instance?._
     }
 }
 

@@ -49,8 +49,8 @@ class Module {
         let res = {}
         let semCounter = 1
         for (const semester of utils.assertArray(semesters)) {
-            const credit = utils.getKey('learningOpportunitySpecification.specifies.learningOpportunityInstance.credit.value', semester)
-            const label = utils.getKey('learningOpportunitySpecification.specifies.learningOpportunityInstance.resultLabel', semester)
+            const credit = semester?.earningOpportunitySpecification?.specifies?.learningOpportunityInstance?.credit?.value
+            const label = semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.resultLabel
             res["semester"+semCounter] = credit ?? label
             semCounter++
         }
@@ -61,7 +61,7 @@ class Module {
 class ForeignLanguage {
     constructor(languageLOS){
         utils.parseLangText("title", languageLOS, this)
-        this.level = languageLOS.specifies.learningOpportunityInstance.resultLabel
+        this.level = languageLOS?.specifies?.learningOpportunityInstance?.resultLabel
     }
 }
 
@@ -85,7 +85,7 @@ class ExaminationComponent {
         //utils.parseLangText("title", componentLOS, this)
         let title = componentLOS["title"]._
         this.type = title.split(" ")[2]
-        this.score = componentLOS.specifies.learningOpportunityInstance.credit.value
+        this.score = componentLOS?.specifies?.learningOpportunityInstance?.credit?.value
     }
 }
 
@@ -93,7 +93,7 @@ function handleAchievements(parts){
     let res = []
     let qPhaseSpec = parts[0].learningOpportunitySpecification
     let learningAchievements = qPhaseSpec.hasPart.map(element => new Module(element.learningOpportunitySpecification));
-    const qPhaseScore = qPhaseSpec.specifies.learningOpportunityInstance.credit.value
+    const qPhaseScore = qPhaseSpec?.specifies?.learningOpportunityInstance?.credit?.value
     const qPhase = {
         totalScore: qPhaseScore,
         courses: learningAchievements
@@ -103,7 +103,7 @@ function handleAchievements(parts){
 
     let examsSpec = parts[1].learningOpportunitySpecification
     let examsParts = examsSpec.hasPart.map(element => new Examination(element.learningOpportunitySpecification));
-    const examsScore = examsSpec.specifies.learningOpportunityInstance.credit.value
+    const examsScore = examsSpec?.specifies?.learningOpportunityInstance?.credit?.value
     const exams = {
         totalScore: examsScore,
         examns: examsParts
