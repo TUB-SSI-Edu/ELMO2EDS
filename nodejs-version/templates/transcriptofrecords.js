@@ -77,11 +77,10 @@ function handleExtras(elmo){
     let gSchemes = []
     console.log(elmo.report.gradingScheme)
     gSchemes = utils.assertArray(elmo.report.gradingScheme).map(el => new GradingScheme(el))
-    console.log(gSchemes)
     extras.gradingSchemes = gSchemes
 
     // attachments?
-    
+
     return extras
 }
 // extra classes

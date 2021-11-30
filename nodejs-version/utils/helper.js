@@ -17,7 +17,6 @@ function multiTagParser(tag, attribute, src, target){
         return
     }
     for (const instance of assertArray(src[tag])) {
-        console.log(instance)
         target[tag+instance?.$[attribute]?.toUpperCase()] = instance?._
     }
 }
