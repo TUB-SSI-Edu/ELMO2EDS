@@ -1,7 +1,8 @@
 
 // some usefull helper function you might want to use
 const utils = require('../utils/helper')
-const { handleAchievements } = require('./abitur')
+
+const keywords = ["diploma", "university exam"]
 
 class Issuer {
     constructor(issuer, levels){
@@ -13,7 +14,11 @@ class Issuer {
 class CredentialSubject {
     constructor(learner){
         this.givenName = learner.givenNames,
-        this.familyName = learner.familyName
+        this.familyName = learner.familyName,
+        this.citizenship = learner.citizenship,
+        this.bday = learner.bday,
+        this.placeOfBirth = learner.placeOfBirth,
+        this.gender = learner.gender,
         this.degree = {}
     }
 
@@ -32,10 +37,19 @@ class Degree {
 // and a function that constructs them
 
 function handleAchievements(parts){
-
+    return {}
 }
-
 // TODO: your achievement classes
 
-module.exports = {Issuer, CredentialSubject, handleAchievements}
+
+// handlich extra properties
+function handleExtras(elmo){
+    extras = {}
+
+    return extras
+}
+
+// TDOD: extra classes
+
+module.exports = {Issuer, CredentialSubject, handleAchievements, keywords}
 

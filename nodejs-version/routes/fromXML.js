@@ -54,6 +54,9 @@ router.get('/convert/:fileName', (req, res, next) => {
 })
 
 router.post('/convert/verifiableCredential', (req, res, next) => {
+    if(!req.body.hasOwnProperty('elmo')){
+        res.statusCode(400).send("Could not process your file. Please make sure it  is in a valid elmo/emrex format.")
+    }
     let cred = credentialParser(req.body)
     res.send(JSON.stringify(cred, null, 4))
 })

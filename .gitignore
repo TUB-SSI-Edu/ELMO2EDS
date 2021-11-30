@@ -1,5 +1,10 @@
 *.log
+# idea data
+.vscode/
+# tempates with confidential data
 sig*
+tor*
+
 package-lock.json
 
 # node-waf configuration
@@ -11,6 +16,8 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+
+# tests
 coverage/
 
 

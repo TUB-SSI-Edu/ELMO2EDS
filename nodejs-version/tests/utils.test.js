@@ -22,6 +22,12 @@ const obj = {
         "$": {
             "xml:lang": "en"
         }
+    },
+    "identifier":{
+        "_": "12345",
+        "$": {
+            "type": "SCHAC"
+        }
     }
 }
 
@@ -64,7 +70,7 @@ describe('testing key check functionality', () => {
     });
 });
 
-// parseLanguageTests
+// multiTagParser
 describe('testing language attributes parsing', () => {
     let res
     beforeEach(() => {
@@ -72,17 +78,22 @@ describe('testing language attributes parsing', () => {
     });
 
     test('parse DE title', () => {
-        helper.parseLangText('title', obj, res)
+        helper.multiTagParser('title', "xml:lang", obj, res)
         expect(res).toHaveProperty('titleDE', 'Großartiger Titel');
     });
 
     test('parse EN description', () => {
-        helper.parseLangText('description', obj, res)
+        helper.multiTagParser('description', "xml:lang", obj, res)
         expect(res).toHaveProperty('descriptionEN', 'detailed description, with many characters');
     });
 
     test('parse not exitsing property', () => {
-        helper.parseLangText('iceCream', obj, res)
+        helper.multiTagParser('iceCream', 'xml:lang',obj, res)
         expect(res).toEqual({});
+    });
+
+    test('parse identifier with type attr', () => {
+        helper.multiTagParser('identifier', 'type',obj, res)
+        expect(res).toHaveProperty('identifierSCHAC', '12345');
     });
 })

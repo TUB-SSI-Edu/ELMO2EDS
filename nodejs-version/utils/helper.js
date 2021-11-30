@@ -2,7 +2,7 @@
 // if not iterable do only to single objetc; if iterable to every item
 function assertArray(obj){
     if (!obj){
-        return Error('ofject is nullish')
+        return []
     }
     if (obj instanceof Array){
         return obj;
@@ -10,10 +10,15 @@ function assertArray(obj){
     return [obj]
 }
 
-function parseLangText(type, xml, target){
-    if (typeof xml[type] == "undefined"){return Error("no such property")}
-    for (const instance of assertArray(xml[type])) {
-        target[type+instance?.$["xml:lang"]?.toUpperCase()] = instance?._
+function multiTagParser(tag, attribute, src, target){
+    if (!src || !src.hasOwnProperty(tag)){return Error("no such property or empty soruce")}
+    if (!assertArray(src[tag])[0].hasOwnProperty('$')) {
+        target[tag] = src[tag]
+        return
+    }
+    for (const instance of assertArray(src[tag])) {
+        console.log(instance)
+        target[tag+instance?.$[attribute]?.toUpperCase()] = instance?._
     }
 }
 
@@ -58,4 +63,4 @@ function find(theObject) {
 }
 */
 
-module.exports = {assertArray, parseLangText, isEmpty, getKey}
+module.exports = {assertArray, multiTagParser, isEmpty, getKey}

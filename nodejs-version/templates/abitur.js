@@ -1,16 +1,16 @@
 const utils = require('../utils/helper')
 
+const keywords = ["abitur"]
+
 class Issuer {
     constructor(issuer, levels){
             this.url = issuer.url,
             this.country = issuer.country
 
-            utils.parseLangText("title", issuer, this)
-            utils.parseLangText("description", issuer, this)
+            utils.multiTagParser("title", "xml:lang", issuer, this)
+            utils.multiTagParser("description", "xml:lang", issuer, this)
             // issuer id
-            for (const id of utils.assertArray(issuer.identifier)) {
-                this["id"+id.$.type.toUpperCase()] = id._
-            }
+            utils.multiTagParser("identifier", "type", issuer, this)
             // levels
             for (const level of utils.assertArray(levels)) {
                 this["level"+level.type.toUpperCase()] = level.value
@@ -21,7 +21,11 @@ class Issuer {
 class CredentialSubject {
     constructor(learner){
         this.givenName = learner.givenNames,
-        this.familyName = learner.familyName
+        this.familyName = learner.familyName,
+        this.citizenship = learner.citizenship,
+        this.bday = learner.bday,
+        this.placeOfBirth = learner.placeOfBirth,
+        this.gender = learner.gender,
         this.degree = {}
     }
 
@@ -32,10 +36,11 @@ class CredentialSubject {
 
 class Degree {
     constructor(learnerLOS, credits){
-        utils.parseLangText("title", learnerLOS, this)
-        utils.parseLangText("description", learnerLOS, this)
+        utils.multiTagParser("title", "xml:lang", learnerLOS, this)
+        utils.multiTagParser("description", "xml:lang", learnerLOS, this)
         for (const credit of utils.assertArray(credits)) {
             this["score"+credit.scheme.toUpperCase()] = credit.value
+            this["level"+credit.scheme.toUpperCase()] = credit.level
         }
     }
 }
@@ -60,14 +65,14 @@ class Module {
 
 class ForeignLanguage {
     constructor(languageLOS){
-        utils.parseLangText("title", languageLOS, this)
+        utils.multiTagParser("title", "xml:lang",languageLOS, this)
         this.level = languageLOS?.specifies?.learningOpportunityInstance?.resultLabel
     }
 }
 
 class Examination {
     constructor(examLOS){
-        utils.parseLangText("title", examLOS, this)
+        utils.multiTagParser("title", "xml:lang", examLOS, this)
         this.components = this.addComponents(examLOS.hasPart)
     } 
     addComponents(components){
@@ -117,4 +122,4 @@ function handleAchievements(parts){
 }
 
 
-module.exports = {Issuer, CredentialSubject, handleAchievements}
+module.exports = {Issuer, CredentialSubject, handleAchievements, keywords}

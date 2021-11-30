@@ -4,6 +4,7 @@ const logger = require('morgan');
 const app = express()
 const port = 8081
 
+
 // Routes
 const xmlRouter = require('./routes/fromXML')
 
@@ -21,7 +22,7 @@ app.use(
 app.use('/api/xml/', xmlRouter)
 
 app.get('/', (req, res) => {
-  res.send('This is the emrex/elmo converter. Send XML file via post at /api/convert')
+  res.send('This is the emrex/elmo converter, developed for the IDUnion project. Check <a href="https://github.com/pherbke/elmo-converter#api-wip">https://github.com/pherbke/elmo-converter#api-wip</a> for infos and API')
 })
 
 
