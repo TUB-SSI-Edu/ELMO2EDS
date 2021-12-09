@@ -192,6 +192,7 @@ The type of the document is determined by the Value at XPath `elmo > report > le
 Currently supported type are:
 
 - Abitur
+- Transcript of Records
 
 If no value is given a more general json file is created wich is probably less suitable for credential creation.
 
@@ -201,9 +202,29 @@ The convert should output a [JSON-LD](https://json-ld.org/) wich can be issued a
 A first example outline can be found [here](https://github.com/pherbke/schoolDiploma).
 
 ### custom templates
+
 You can add your own conversion template. Take a look at `templates/_blank.js` for a blank example.
 
+Important Parts are
+
+#### Keywords
+
+The document is search for these Keywords and if a match is found your template is used.
+Use this to determine on wich kinds of documents your template should be applied.
+
+#### Extras
+
+You can extract additional information from the given file wich isnt categorized by the default classes.
+You get the raw JavaScript object converted from the xml file and should return an Object that has alle the parsed additional information you need in xyour credential. The Properties are copied onto the final credential response.
+
+### Testing
+
+Testing is done with [jest](https://jestjs.io/) wich supplies easy and straight forward testing and coverage functionalities. Additional tests can be written in the `node-version/tests` directory as `filename_test.js`.
+
+All tests can be executed by running `npm test` in the `node-version` directory.
+
 ## Problems
+
 Not all data required for a verifiable credential exists in the input file. This data has to be collected to successfully convert to that specific format.
 
 ### optional quality of life features

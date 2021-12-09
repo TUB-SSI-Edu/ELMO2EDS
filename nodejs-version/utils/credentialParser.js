@@ -31,7 +31,7 @@ function parseCredential(xml){
     let cred = require("./baseCredential.json")
 
     // places to check for keywords
-    const potentialTypeTags = [LOS.title?._, LOI?.credit?.level]
+    const potentialTypeTags = [LOS.title?._, LOI?.credit?.level, elmo?.attachment?.title]
 
     // check if it is a "known document"
     const docTypes = getDocTypes(potentialTypeTags)
@@ -52,8 +52,7 @@ function parseCredential(xml){
     cred.credentialSubject = Object.assign(cred.credentialSubject, subjectData)
 
     // ACHIEVEMENTS
-    cred.achievements = []
-    cred.achievements.push(template.handleAchievements(LOS.hasPart))
+    cred.credentialSubject.achieved[0].hasPart.learningAchievements.push(...template.handleAchievements(LOS.hasPart))
 
     // EXTRAS IF NEEDED
     if (template.hasOwnProperty('handleExtras')) {

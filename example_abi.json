@@ -1,0 +1,544 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://raw.githubusercontent.com/pherbke/schoolDiploma/master/schemas/schoolDiploma_schema.json"
+  ],
+  "type": [
+    "VerifiableCredential",
+    "VerifiableAttestation",
+    "Europass"
+  ],
+  "issuer": {
+    "id": "did:key:zUC7L3Dvdvnt8EHzekfj8iLEp1cRrBvQYHy8MCFEDY74qBb4a6nrpTd5k4NhpEXJ7e7kGaqiohzNpzB2dEebG6zXdwSYQXDbhdn16qzVrTZkvSArVpijn3qo2HgcA2PefDvkGpB",
+    "url": "https://www.ekg-lemgo.de/",
+    "country": "DE",
+    "titleDE": "Test Engelbert-Kaempfer-Gymnasium Test",
+    "identifierSCHAC": "DE NRW 168890",
+    "levelEQF": "4"
+  },
+  "credentialSubject": {
+    "id": "did:key:zUC7LuiWRcuF5aztAVaqXnvkBq2eQscxv95ULVAjF9M3AEXKusBNBmVrTo4zrvG6Q3WUNd7kCWE27sxysSjDjsBTnpAW1PEBBGeuKbPapkny58Uo6YhRE3o3npoo3dpfAZaj8yr",
+    "givenName": "Aschenborn",
+    "familyName": "Niklas",
+    "citizenship": "DE",
+    "bday": "1999-12-30",
+    "placeOfBirth": "Paderborn",
+    "gender": "1",
+    "achieved": [
+      {
+        "titleEN": "Abitur",
+        "descriptionEN": "higher education entrance qualification",
+        "scoreECTS": "3.5",
+        "scoreGRADINGSCHEMEABITUR": "385",
+        "hasPart": {
+          "learningAchievements": [
+            {
+              "qualificationPhase": {
+                "totalScore": "284",
+                "courses": [
+                  {
+                    "titleEN": "Mathematik",
+                    "hasPart": {
+                      "semesters": [
+                        {
+                          "titleEN": "Mathematik 1st semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "4",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Mathematik 2nd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "4",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Mathematik 3rd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "5",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Mathematik 4th semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "5",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "titleEN": "Kath. Religionslehre",
+                    "hasPart": {
+                      "semesters": [
+                        {
+                          "titleEN": "Kath. Religionslehre 1st semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "5",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Kath. Religionslehre 2nd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "10",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Kath. Religionslehre 3rd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "0",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Kath. Religionslehre 4th semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "0",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "titleEN": "Erziehungswissenschaft",
+                    "hasPart": {
+                      "semesters": [
+                        {
+                          "titleEN": "Erziehungswissenschaft 1st semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "12",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Erziehungswissenschaft 2nd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "8",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Erziehungswissenschaft 3rd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "8",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Erziehungswissenschaft 4th semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "7",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "titleEN": "Sport",
+                    "hasPart": {
+                      "semesters": [
+                        {
+                          "titleEN": "Sport 1st semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "12",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Sport 2nd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "12",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Sport 3rd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "8",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Sport 4th semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "8",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "titleEN": "Physik",
+                    "hasPart": {
+                      "semesters": [
+                        {
+                          "titleEN": "Physik 1st semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "5",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Physik 2nd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "6",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Physik 3rd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "7",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Physik 4th semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "7",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "titleEN": "Biologie",
+                    "hasPart": {
+                      "semesters": [
+                        {
+                          "titleEN": "Biologie 1st semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "4",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Biologie 2nd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "5",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Biologie 3rd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "8",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Biologie 4th semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "7",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "titleEN": "Kunsterziehung",
+                    "hasPart": {
+                      "semesters": [
+                        {
+                          "titleEN": "Kunsterziehung 1st semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "5",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Kunsterziehung 2nd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "6",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Kunsterziehung 3rd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "0",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Kunsterziehung 4th semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "0",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "titleEN": "Englisch",
+                    "hasPart": {
+                      "semesters": [
+                        {
+                          "titleEN": "Englisch 1st semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "5",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Englisch 2nd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "8",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Englisch 3rd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "7",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Englisch 4th semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "6",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "titleEN": "Deutsch",
+                    "hasPart": {
+                      "semesters": [
+                        {
+                          "titleEN": "Deutsch 1st semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "5",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Deutsch 2nd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "5",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Deutsch 3rd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "7",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Deutsch 4th semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "5",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "titleEN": "Sozialwissenschaften",
+                    "hasPart": {
+                      "semesters": [
+                        {
+                          "titleEN": "Sozialwissenschaften 1st semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "0",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Sozialwissenschaften 2nd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "0",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Sozialwissenschaften 3rd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "10",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Sozialwissenschaften 4th semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "5",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "titleEN": "Geschichte",
+                    "hasPart": {
+                      "semesters": [
+                        {
+                          "titleEN": "Geschichte 1st semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "0",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Geschichte 2nd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "0",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Geschichte 3rd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "10",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Geschichte 4th semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "7",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "titleEN": "Erdkunde",
+                    "hasPart": {
+                      "semesters": [
+                        {
+                          "titleEN": "Erdkunde 1st semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "6",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Erdkunde 2nd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "9",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Erdkunde 3rd semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "7",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        },
+                        {
+                          "titleEN": "Erdkunde 4th semester",
+                          "start": "2019-09-01",
+                          "end": "2020-06-01",
+                          "grade": "4",
+                          "gradingScheme": "gradingSchemeAbitur"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "finalExaminations": {
+                "totalScore": "101",
+                "examns": [
+                  {
+                    "titleEN": "Erziehungswissenschaft",
+                    "components": [
+                      {
+                        "type": "oral",
+                        "score": "11"
+                      },
+                      {
+                        "type": "written",
+                        "score": "8"
+                      }
+                    ]
+                  },
+                  {
+                    "titleEN": "Physik",
+                    "components": [
+                      {
+                        "type": "oral",
+                        "score": "3"
+                      }
+                    ]
+                  },
+                  {
+                    "titleEN": "Englisch",
+                    "components": [
+                      {
+                        "type": "oral",
+                        "score": "7"
+                      },
+                      {
+                        "type": "written",
+                        "score": "8"
+                      }
+                    ]
+                  },
+                  {
+                    "titleEN": "Deutsch",
+                    "components": [
+                      {
+                        "type": "oral",
+                        "score": "0"
+                      },
+                      {
+                        "type": "written",
+                        "score": "1"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "foreignLanguages": [
+                {
+                  "titleEN": "Französisch",
+                  "level": "B1"
+                },
+                {
+                  "titleEN": "Englisch",
+                  "level": "B2/C1"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "credentialSchema": {
+    "id": "https://ec.europa.eu/cefdigital/code/projects/EBSI/repos/json-schema/raw/ebsi-muti-uni-pilot/Verifiable%20Diploma_generated-schema.json",
+    "type": "FullJsonSchemaValidator2021"
+  },
+  "proof": {
+    "method": "placeholder",
+    "key": "placeholder"
+  },
+  "diplomaIssuanceDate": "2019-07-05T00:00:00.000Z",
+  "diplomaGeneratedDate": "2020-05-28T13:51:14.573Z"
+}

@@ -48,7 +48,7 @@ describe('testing array assertion', () => {
     });
 
     test('error on undefined input', () => {
-        expect(helper.assertArray(undefined)).toEqual(expect.any(Error));
+        expect(helper.assertArray(undefined)).toEqual([]);
     });
 
     test('[obj, obj] => should not change', () => {

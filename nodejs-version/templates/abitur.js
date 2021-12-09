@@ -26,11 +26,11 @@ class CredentialSubject {
         this.bday = learner.bday,
         this.placeOfBirth = learner.placeOfBirth,
         this.gender = learner.gender,
-        this.degree = {}
+        this.achieved = []
     }
 
     addDegree(learnerLOS, credits) {
-        this.degree = new Degree(learnerLOS, credits)
+        this.achieved.push(new Degree(learnerLOS, credits))
     }   
 }
 
@@ -42,24 +42,30 @@ class Degree {
             this["score"+credit.scheme.toUpperCase()] = credit.value
             this["level"+credit.scheme.toUpperCase()] = credit.level
         }
+        this.hasPart = {
+            'learningAchievements': []
+        }
     }
 }
 
 class Module {
     constructor(moduleLOS){
-        this.courseSubject = moduleLOS.title._
-        this.semesterScores = this.parseSemesters(moduleLOS.hasPart)
+        utils.multiTagParser("title", "xml:lang", moduleLOS, this)
+        this.hasPart = {}
+        this.hasPart.semesters = utils.assertArray(moduleLOS.hasPart).map((el) => {
+            return new Semester(el)
+        })
+    
     }
-    parseSemesters(semesters){
-        let res = {}
-        let semCounter = 1
-        for (const semester of utils.assertArray(semesters)) {
-            const credit = semester?.earningOpportunitySpecification?.specifies?.learningOpportunityInstance?.credit?.value
-            const label = semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.resultLabel
-            res["semester"+semCounter] = credit ?? label
-            semCounter++
-        }
-        return res
+}
+
+class Semester {
+    constructor(semester){
+        utils.multiTagParser("title", "xml:lang", semester?.learningOpportunitySpecification, this)
+        this.start = semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.academicTerm?.start
+        this.end = semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.academicTerm?.end
+        this.grade = semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.credit?.value
+        this.gradingScheme = semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.credit?.scheme
     }
 }
 

@@ -29,11 +29,11 @@ class CredentialSubject {
         this.placeOfBirth = learner.placeOfBirth,
         this.gender = learner.gender,
         utils.multiTagParser("identifier", "type", learner, this),
-        this.degree = {}
+        this.achieved = []
     }
 
     addDegree(learnerLOS, credits) {
-        this.degree = new Degree(learnerLOS, credits)
+        this.achieved.push(new Degree(learnerLOS, credits))
     }   
 }
 
@@ -44,6 +44,9 @@ class Degree {
         for (const credit of utils.assertArray(credits)) {
             this["score"+credit.scheme.toUpperCase()] = credit.value
             this["level"+credit.scheme.toUpperCase()] = credit.level
+        }
+        this.hasPart = {
+            'learningAchievements': []
         }
     }
 }
@@ -58,12 +61,14 @@ function handleAchievements(parts){
 // TODO: your achievement classes
 class Module {
     constructor(moduleLOS){
-        utils.multiTagParser("identifier", "type", moduleLOS, this)
         utils.multiTagParser("title", "xml:lang", moduleLOS, this)
+        this.identifier = utils.assertArray(moduleLOS.identifier).map(el => {
+            return {'type': el.$.type, 'value': el._}
+        })
         this.type = moduleLOS.type
         this.status = moduleLOS?.specifies?.learningOpportunityInstance?.status
-        this.gradingSchemeLocalId = moduleLOS?.specifies?.learningOpportunityInstance?.gradingSchemeLocalId
-        this.resultLabel = moduleLOS?.specifies?.learningOpportunityInstance?.resultLabel
+        this.gradingScheme = moduleLOS?.specifies?.learningOpportunityInstance?.gradingSchemeLocalId
+        this.grade = moduleLOS?.specifies?.learningOpportunityInstance?.resultLabel
         let credits = moduleLOS?.specifies?.learningOpportunityInstance?.credit
         for (const credit of utils.assertArray(credits)) {
             this["score"+credit.scheme.toUpperCase()] = credit.value
