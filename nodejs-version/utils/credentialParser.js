@@ -1,26 +1,51 @@
+// reqired property : test function
+const requiredTemplateProperties = {
+  keywords: obj => {return Array.isArray(obj) == true},
+  Issuer: obj => typeof obj == 'function',
+  CredentialSubject: obj => typeof obj == 'function',
+  handleAchievements: obj => typeof obj == 'function'
+}
 
-// on starup
+// on startup
+const templateDict = loadTemplates()
+
 // gather keywords from all templates
-const normalizedPath = require("path").join(__dirname, "../templates");
+function loadTemplates(){
 
-const templateDict = {}
+  let templateDict = {}
+  const normalizedPath = require("path").join(__dirname, "../templates");
 
-require("fs").readdirSync(normalizedPath).forEach(function(file) {
-  if (file[0] == "_") {
-    return
-  }
-  console.log("found tempalte:", file)
-  require("../templates/" + file).keywords.forEach((keyw) => {
-    templateDict[keyw.toLowerCase()] = file
+  require("fs").readdirSync(normalizedPath).forEach(function(file) {
+    if (!validateTemplate(file, requiredTemplateProperties) || file[0] == "_") {
+      return
+    }
+    console.log("found template:", file)
+    require("../templates/" + file).keywords.forEach((keyw) => {
+      templateDict[keyw.toLowerCase()] = file
+    });
+    
   });
-  
-});
+  return templateDict
+}
+
 
 function getDocTypes(potentialTypeTags){
     return potentialTypeTags.reduce((found, el)=>{
         el &&= el.toLowerCase()
         return el in templateDict ? found.concat([templateDict[el]]) : found
     }, [])
+}
+
+function validateTemplate(filename, requirements){
+  const template = require("../templates/" + filename)
+  for (const [prop, test] of Object.entries(requirements)) {
+    // if prop not existing or if it fails the test
+    if(template[prop] == undefined || !(test(template[prop]))){
+      console.warn('TEMPLATE NOT VALID! :', filename)
+      return false
+    }
+  }
+  return true
 }
 
 // maybe use xPath query for XML package instead of hardcoding every path
@@ -64,4 +89,8 @@ function parseCredential(xml){
     return cred
 }
 
-module.exports = parseCredential
+module.exports = {parseCredential, _testing :{
+  templateDict, 
+  getDocTypes,
+  validateTemplate
+}}

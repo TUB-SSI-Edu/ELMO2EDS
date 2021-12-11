@@ -1,6 +1,5 @@
 
 // some usefull helper function you might want to use
-const utils = require('../utils/helper')
 
 const keywords = ["diploma", "university exam"]
 
