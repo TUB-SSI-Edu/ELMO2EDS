@@ -22,13 +22,14 @@ class Issuer {
 
 class CredentialSubject {
     constructor(learner){
-        this.givenName = learner.givenNames,
-        this.familyName = learner.familyName,
-        this.citizenship = learner.citizenship,
-        this.bday = learner.bday,
-        this.placeOfBirth = learner.placeOfBirth,
-        this.gender = learner.gender,
-        utils.multiTagParser("identifier", "type", learner, this),
+        this.givenName = learner.givenNames
+        this.familyName = learner.familyName
+        this.fullName = this.givenName +" "+this.familyName
+        this.citizenship = learner.citizenship
+        this.dateOfBirth = learner.bday
+        this.placeOfBirth = learner.placeOfBirth
+        this.gender = learner.gender
+        utils.multiTagParser("identifier", "type", learner, this)
         this.achieved = []
     }
 

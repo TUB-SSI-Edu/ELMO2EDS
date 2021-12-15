@@ -47,6 +47,16 @@ example response:
 
 ---
 
+##### Table of Contents
+[History](#first-progress-using-golang-and-switch-to-nodejs)  
+[Prerequisites](#prerequisites-1) 
+[Building and Running](#building-and-running)
+[API](#api-wip)
+[Additional Details](#additional-details)
+[Known Problems](#problems)
+
+---
+
 ### First Progress using Golang and switch to NodeJS 
 
 <details>
@@ -217,7 +227,7 @@ Required components are\\
 The document is search for these Keywords and if a match is found your template is used.
 Use this to determine on wich kinds of documents your template should be applied.
 
-#### Extras (optinal)
+#### Extras (optoinal)
 
 You can extract additional information from the given file wich isnt categorized by the default classes.
 You get the raw JavaScript object converted from the xml file and should return an Object that has alle the parsed additional information you need in xyour credential. The Properties are copied onto the final credential response.
