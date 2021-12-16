@@ -3,5 +3,6 @@
 <from>Mustermann</from>
 <heading>Reminder</heading>
 <text xml:lang="en">Don't forget me this weekend!</body>
+<text xml:lang="de">Hoch die Hände, Wochenende!</body>
 <id type="TYPE">123</id>
 </note>
