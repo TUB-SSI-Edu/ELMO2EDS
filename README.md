@@ -153,7 +153,7 @@ An example can be found in the `credential.js`
 --- 
 
 ### Prerequisites
-- developed with NodeJS v12.21.0 ([install](https://nodejs.org))
+- developed with NodeJS v16 ([install](https://nodejs.org))
 - xml file in the [emrex/emlo format](https://github.com/emrex-eu/elmo-schemas)
 
 ### Building and Running
@@ -164,7 +164,6 @@ git clone https://git.snet.tu-berlin.de/blockchain/idunion/elmo-converter.git
 ```
 Download dependencies
 ```sh
-cd elmo-converter/node-version
 npm install
 ```
 
@@ -209,7 +208,7 @@ If no value is given a more general json file is created wich is probably less s
 ### Output file
 The convert should output a [JSON-LD](https://json-ld.org/) wich can be issued as a verifiable credential in an SSI context of the hyperledger aries network.
 
-A first example outline can be found [here](https://github.com/pherbke/schoolDiploma).
+A first example outline can be found [here](./complementary_files/example_abi.json).
 
 ### Custom templates
 
