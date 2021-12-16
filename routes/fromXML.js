@@ -13,7 +13,8 @@ const parseOptions = {
     trim: true
 }
 const XMLParser = new xml2js.Parser(parseOptions);
-const pathToLocalFiles = "../complementary_files/"
+
+const pathToLocalFiles = "./complementary_files/"
 
 router.get('/', (req, res, next) => {
     res.send("please post xml file to /api/convert")
