@@ -13,6 +13,7 @@ const parseOptions = {
     trim: true
 }
 const XMLParser = new xml2js.Parser(parseOptions);
+const pathToLocalFiles = "../complementary_files/"
 
 router.get('/', (req, res, next) => {
     res.send("please post xml file to /api/convert")
@@ -39,7 +40,7 @@ router.post('/convert/', (req, res, next) => {
 
 
 router.get('/convert/:fileName', (req, res, next) => {
-    let text = fs.readFileSync("../" + req.params.fileName + ".xml", "utf-8") 
+    let text = fs.readFileSync(pathToLocalFiles + req.params.fileName + ".xml", "utf-8") 
 
     XMLParser.parseStringPromise(text)
     .then((data, error) => {
@@ -63,7 +64,7 @@ router.post('/convert/verifiableCredential', (req, res, next) => {
 
 // reads local file :filename and uses that as input
 router.get("/convert/verifiableCredential/:fileName", (req, res, next) => {
-    let text = fs.readFileSync("../" + req.params.fileName + ".xml", "utf-8") 
+    let text = fs.readFileSync(pathToLocalFiles + req.params.fileName + ".xml", "utf-8") 
 
     XMLParser.parseStringPromise(text)
     .then((data, error) => {
