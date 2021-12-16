@@ -40,6 +40,6 @@ jobs:
         port: 22
         script: |
           cd ${{ secrets.SSH_TARGET_DIR }}
-          git pull origin master
+          git pull origin main
           npm install --production
           pm2 restart main
