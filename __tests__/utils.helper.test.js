@@ -96,8 +96,4 @@ describe('testing language attributes parsing', () => {
         helper.multiTagParser('identifier', 'type',obj, res)
         expect(res).toHaveProperty('identifierSCHAC', '12345');
     });
-
-    test('failed test for ci test', () => {
-        expect(res).toHaveProperty('test');
-    });
 })
