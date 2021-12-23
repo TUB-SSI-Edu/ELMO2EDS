@@ -2,12 +2,12 @@
 // if not iterable do only to single objetc; if iterable to every item
 function assertArray(obj){
     if (!obj){
-        return []
+        return [];
     }
     if (obj instanceof Array){
         return obj;
     }
-    return [obj]
+    return [obj];
 }
 
 function multiTagParser(tag, attribute, src, target){
@@ -17,7 +17,7 @@ function multiTagParser(tag, attribute, src, target){
         return
     }
     for (const instance of assertArray(src[tag])) {
-        target[tag+instance?.$[attribute]?.toUpperCase()] = instance?._
+        target[tag+instance?.$[attribute]?.toUpperCase()] = instance?._;
     }
 }
 
@@ -30,36 +30,14 @@ function getKey(key, obj) {
       return a && a[b];
     }, obj);
 }
-/*
-function find(theObject) {
-    var result = null;
-    if(theObject instanceof Array) {
-        for(var i = 0; i < theObject.length; i++) {
-            result = getObject(theObject[i]);
-            if (result) {
-                break;
-            }   
+
+function parseIdentifier(learner){
+    return learner.identifier.map(el => {
+        return {
+            schemeID: el?.$?.type,
+
         }
-    }
-    else
-    {
-        for(var prop in theObject) {
-            console.log(prop + ': ' + theObject[prop]);
-            if(prop == 'id') {
-                if(theObject[prop] == 1) {
-                    return theObject;
-                }
-            }
-            if(theObject[prop] instanceof Object || theObject[prop] instanceof Array) {
-                result = getObject(theObject[prop]);
-                if (result) {
-                    break;
-                }
-            } 
-        }
-    }
-    return result;
+    })
 }
-*/
 
 module.exports = {assertArray, multiTagParser, isEmpty, getKey}
