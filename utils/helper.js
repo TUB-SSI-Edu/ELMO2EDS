@@ -31,13 +31,13 @@ function getKey(key, obj) {
     }, obj);
 }
 
-function parseIdentifier(learner){
-    return learner.identifier.map(el => {
+function parseIdentifier(obj){
+    return assertArray(obj.identifier).map(el => {
         return {
             schemeID: el?.$?.type,
-
+            value: el?._
         }
     })
 }
 
-module.exports = {assertArray, multiTagParser, isEmpty, getKey}
+module.exports = {assertArray, multiTagParser, isEmpty, getKey, parseIdentifier}

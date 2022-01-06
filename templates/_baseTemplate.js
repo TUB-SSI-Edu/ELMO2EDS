@@ -1,7 +1,7 @@
 const utils = require('../utils/helper')
 // some usefull helper function you might want to use
 
-const keywords = ["diploma", "university exam"]
+const keywords = ["diploma"]
 
 class Issuer {
     constructor(issuer, levels){

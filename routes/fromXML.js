@@ -6,7 +6,7 @@ const router = express.Router()
 const xmlparser = require('express-xml-bodyparser');
 const fs = require('fs');
 const xml2js = require('xml2js');
-const credentialParser = require('../utils/credentialParser') 
+const credentialParser = require('../utils/credentialParser') .parseCredential
 
 const parseOptions = {
     explicitArray: false,
@@ -14,7 +14,7 @@ const parseOptions = {
 }
 const XMLParser = new xml2js.Parser(parseOptions);
 
-const pathToLocalFiles = "./complementary_files/"
+const pathToLocalFiles = "./complementaryFiles/"
 
 router.get('/', (req, res, next) => {
     res.send("please post xml file to /api/convert")
@@ -57,7 +57,7 @@ router.get('/convert/:fileName', (req, res, next) => {
 
 router.post('/convert/verifiableCredential', (req, res, next) => {
     if(!req.body.hasOwnProperty('elmo')){
-        res.statusCode(400).send("Could not process your file. Please make sure it  is in a valid elmo/emrex format.")
+        res.status(400).send("Could not process your file. Please make sure it  is in a valid elmo/emrex format and the http header for 'Content-Type' is set to 'application/xml'.")
     }
     let cred = credentialParser(req.body)
     res.send(JSON.stringify(cred, null, 4))
