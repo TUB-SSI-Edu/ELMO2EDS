@@ -20,6 +20,8 @@ router.get('/', (req, res, next) => {
     res.send("please post xml file to /api/convert")
 })
 
+
+
 // parse and check if empty
 router.post("/*", xmlparser({
     trim: false, 
@@ -28,7 +30,7 @@ router.post("/*", xmlparser({
     explicitArray: false
     }),(req,res,next) => {
     if (utils.isEmpty(req.body)){
-        res.send("no file recieved - please post valid xml file")
+        res.status(400).send("no file recieved - please post valid xml file")
     } else {
         next()
     }
