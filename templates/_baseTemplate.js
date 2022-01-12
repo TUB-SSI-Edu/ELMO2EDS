@@ -1,23 +1,25 @@
-
+const utils = require('../utils/helper')
 // some usefull helper function you might want to use
 
-const keywords = ["diploma", "university exam"]
+const keywords = ["diploma"]
 
 class Issuer {
     constructor(issuer, levels){
-        this.url = issuer.url,
-        this.country = issuer.country
+        this.url = issuer.url;
+        this.country = issuer.country;
     }
 }
 
 class CredentialSubject {
     constructor(learner){
-        this.givenName = learner.givenNames,
-        this.familyName = learner.familyName,
-        this.citizenship = learner.citizenship,
-        this.bday = learner.bday,
-        this.placeOfBirth = learner.placeOfBirth,
-        this.gender = learner.gender,
+        utils.multiTagParser('identifier', 'type', learner, this);
+        this.firstName = learner.givenNames;
+        this.familyName = learner.familyName;
+        this.citizenship = learner.citizenship;
+        this.dateOfBirth = learner.bday;
+        this.placeOfBirth = learner.placeOfBirth;
+        this.gender = learner.gender;
+        this.currentAddress = learner.currentAddress;
         this.degree = {}
     }
 

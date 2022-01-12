@@ -4,13 +4,12 @@ const keywords = ["abitur"]
 
 class Issuer {
     constructor(issuer, levels){
-            this.url = issuer.url,
-            this.country = issuer.country
-
-            utils.multiTagParser("title", "xml:lang", issuer, this)
-            utils.multiTagParser("description", "xml:lang", issuer, this)
+            this.url = issuer.url;
+            this.country = issuer.country;
+            utils.multiTagParser("title", "xml:lang", issuer, this);
+            utils.multiTagParser("description", "xml:lang", issuer, this);
             // issuer id
-            utils.multiTagParser("identifier", "type", issuer, this)
+            utils.multiTagParser("identifier", "type", issuer, this);
             // levels
             for (const level of utils.assertArray(levels)) {
                 this["level"+level.type.toUpperCase()] = level.value
@@ -95,7 +94,7 @@ class ExaminationComponent {
     constructor(componentLOS){
         // dont need title if we have type
         //utils.parseLangText("title", componentLOS, this)
-        let title = componentLOS["title"]._
+        let title = componentLOS?.title?._
         this.type = title.split(" ")[2]
         this.score = componentLOS?.specifies?.learningOpportunityInstance?.credit?.value
     }

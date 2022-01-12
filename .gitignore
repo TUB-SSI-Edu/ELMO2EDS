@@ -1,6 +1,7 @@
 *.log
 # idea data
 .vscode/
+.jshintrc
 # tempates with confidential data
 sig*
 tor*

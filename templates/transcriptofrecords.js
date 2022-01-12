@@ -6,8 +6,8 @@ const keywords = ["transcript of records", "bachelor", "master"]
 
 class Issuer {
     constructor(issuer, levels){
-        this.url = issuer.url,
-        this.country = issuer.country
+        this.url = issuer.url;
+        this.country = issuer.country;
 
         utils.multiTagParser("title", "xml:lang", issuer, this)
         utils.multiTagParser("description", "xml:lang", issuer, this)
@@ -56,24 +56,27 @@ class Degree {
 // and a function that constructs them
 
 function handleAchievements(parts){
-    return {'courses': parts.map(el => new Module(el.learningOpportunitySpecification))}
+    return parts.map(el => new Module(el.learningOpportunitySpecification))
 }
 
 // TODO: your achievement classes
 class Module {
     constructor(moduleLOS){
-        utils.multiTagParser("title", "xml:lang", moduleLOS, this)
-        this.identifier = utils.assertArray(moduleLOS.identifier).map(el => {
-            return {'type': el.$.type, 'value': el._}
-        })
-        this.type = moduleLOS.type
-        this.status = moduleLOS?.specifies?.learningOpportunityInstance?.status
-        this.gradingScheme = moduleLOS?.specifies?.learningOpportunityInstance?.gradingSchemeLocalId
-        this.grade = moduleLOS?.specifies?.learningOpportunityInstance?.resultLabel
-        let credits = moduleLOS?.specifies?.learningOpportunityInstance?.credit
-        for (const credit of utils.assertArray(credits)) {
-            this["score"+credit.scheme.toUpperCase()] = credit.value
-        }
+        this.title = moduleLOS?.title?._
+        this.identifier = utils.parseIdentifier(moduleLOS)
+        this.wasDerivedFrom = [{
+            grade: moduleLOS?.specifies?.learningOpportunityInstance?.resultLabel,
+            status : moduleLOS?.specifies?.learningOpportunityInstance?.status,
+            specifiedBy : {
+                gradingScheme:{
+                    title: moduleLOS?.specifies?.learningOpportunityInstance?.gradingSchemeLocalId
+                }
+            }
+        }]
+        this.specifiedBy = [{
+            learningOpportunityType: moduleLOS.type,
+            eCTSCreditPoints : moduleLOS?.specifies?.learningOpportunityInstance?.credit?.value
+        }]       
     }
 }
 

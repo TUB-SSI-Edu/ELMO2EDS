@@ -9,6 +9,9 @@ const requiredTemplateProperties = {
 // on startup
 const templateDict = loadTemplates()
 
+// path to mockCredential - later maybe dynmaicly created
+const mockCredentialPath = "./mockCredential.json"
+
 // gather keywords from all templates
 function loadTemplates(){
 
@@ -31,8 +34,9 @@ function loadTemplates(){
 
 function getDocTypes(potentialTypeTags){
     return potentialTypeTags.reduce((found, el)=>{
-        el &&= el.toLowerCase()
-        return el in templateDict ? found.concat([templateDict[el]]) : found
+        if (el) el = el.toLowerCase()
+        // if key is known and not already in list -> add it
+        return el in templateDict && !(found.includes(templateDict[el])) ? found.concat([templateDict[el]]) : found
     }, [])
 }
 
@@ -50,10 +54,11 @@ function validateTemplate(filename, requirements){
 
 // maybe use xPath query for XML package instead of hardcoding every path
 function parseCredential(xml){
+    console.debug(xml)
     const elmo = xml.elmo
     const LOS = elmo.report.learningOpportunitySpecification
     const LOI = LOS.specifies.learningOpportunityInstance
-    let cred = require("./baseCredential.json")
+    let cred = require(mockCredentialPath)
 
     // places to check for keywords
     const potentialTypeTags = [LOS.title?._, LOI?.credit?.level, elmo?.attachment?.title]
@@ -77,7 +82,7 @@ function parseCredential(xml){
     cred.credentialSubject = Object.assign(cred.credentialSubject, subjectData)
 
     // ACHIEVEMENTS
-    cred.credentialSubject.achieved[0].hasPart.learningAchievements.push(...template.handleAchievements(LOS.hasPart))
+    cred.credentialSubject.achieved[0].hasPart.learningAchievements = template.handleAchievements(LOS.hasPart)
 
     // EXTRAS IF NEEDED
     if (template.hasOwnProperty('handleExtras')) {
