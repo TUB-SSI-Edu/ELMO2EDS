@@ -62,7 +62,7 @@ function handleAchievements(parts){
 // TODO: your achievement classes
 class Module {
     constructor(moduleLOS){
-        this.title = moduleLOS?.title?._
+        utils.multiTagParser("title", "xml:lang", moduleLOS, this)
         this.identifier = utils.parseIdentifier(moduleLOS)
         this.wasDerivedFrom = [{
             grade: moduleLOS?.specifies?.learningOpportunityInstance?.resultLabel,

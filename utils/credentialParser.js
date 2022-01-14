@@ -61,10 +61,10 @@ function parseCredential(xml){
     let cred = require(mockCredentialPath)
 
     // places to check for keywords
-    const potentialTypeTags = [LOS.title?._, LOI?.credit?.level, elmo?.attachment?.title]
+    let potentialTypeTags = [LOS.title?._, LOI?.credit?.level, elmo?.attachment?.title]
 
     // check if it is a "known document"
-    const docTypes = getDocTypes(potentialTypeTags)
+    let docTypes = getDocTypes(potentialTypeTags)
     console.log("potential templates:", docTypes, "; using first entry")
     const template = require('../templates/'+docTypes[0])
 
