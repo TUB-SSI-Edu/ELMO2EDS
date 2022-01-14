@@ -79,12 +79,12 @@ describe('testing language attributes parsing', () => {
 
     test('parse DE title', () => {
         helper.multiTagParser('title', "xml:lang", obj, res)
-        expect(res).toHaveProperty('titleDE', 'Großartiger Titel');
+        expect(res).toHaveProperty('title', 'Großartiger Titel');
     });
 
     test('parse EN description', () => {
         helper.multiTagParser('description', "xml:lang", obj, res)
-        expect(res).toHaveProperty('descriptionEN', 'detailed description, with many characters');
+        expect(res).toHaveProperty('description', 'detailed description, with many characters');
     });
 
     test('parse not exitsing property', () => {
@@ -93,7 +93,8 @@ describe('testing language attributes parsing', () => {
     });
 
     test('parse identifier with type attr', () => {
-        helper.multiTagParser('identifier', 'type',obj, res)
-        expect(res).toHaveProperty('identifierSCHAC', '12345');
+        let res = helper.parseIdentifier(obj)
+        expect(res).toHaveProperty('schemeID', 'SCHAC');
+        expect(res).toHaveProperty('value', '12345');
     });
 })

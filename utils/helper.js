@@ -36,12 +36,14 @@ function getKey(key, obj) {
 }
 
 function parseIdentifier(obj){
-    return assertArray(obj.identifier).map(el => {
+    let res = assertArray(obj.identifier).map(el => {
         return {
             schemeID: el?.$?.type,
             value: el?._
         }
     })
+    console.log(obj, res)
+    return res.length == 1 ? res[0] : res
 }
 
 module.exports = {assertArray, multiTagParser, isEmpty, getKey, parseIdentifier}
