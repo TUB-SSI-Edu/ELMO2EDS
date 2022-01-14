@@ -9,7 +9,7 @@ class Issuer {
             utils.multiTagParser("title", "xml:lang", issuer, this);
             utils.multiTagParser("description", "xml:lang", issuer, this);
             // issuer id
-            utils.multiTagParser("identifier", "type", issuer, this);
+            this. identifier = utils.parseIdentifier(issuer);
             // levels
             for (const level of utils.assertArray(levels)) {
                 this["level"+level.type.toUpperCase()] = level.value
@@ -51,6 +51,7 @@ class Degree {
 class Module {
     constructor(moduleLOS){
         utils.multiTagParser("title", "xml:lang", moduleLOS, this)
+        this.identifier = utils.parseIdentifier(moduleLOS)
         this.hasPart = {}
         this.hasPart.semesters = utils.assertArray(moduleLOS.hasPart).map((el) => {
             return new Semester(el)
@@ -61,17 +62,33 @@ class Module {
 
 class Semester {
     constructor(semester){
+        this.identifier = utils.parseIdentifier(semester)
         utils.multiTagParser("title", "xml:lang", semester?.learningOpportunitySpecification, this)
         this.start = semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.academicTerm?.start
         this.end = semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.academicTerm?.end
-        this.grade = semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.credit?.value
-        this.gradingScheme = semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.credit?.scheme
+
+        this.wasDerivedFrom = [{
+            grade: semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.credit?.value,
+            specifiedBy : {
+                gradingScheme:{
+                    title: semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.credit?.scheme
+                }
+            }
+        }]
+        this.wasInfluencedBy = [{
+            startedAtTime: semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.academicTerm?.start,
+            endedAtTime: semester?.learningOpportunitySpecification?.specifies?.learningOpportunityInstance?.academicTerm?.end
+        }]
+        this.specifiedBy = [{
+            learningOpportunityType: semester?.learningOpportunitySpecification?.type,
+        }]       
     }
 }
 
 class ForeignLanguage {
     constructor(languageLOS){
         utils.multiTagParser("title", "xml:lang",languageLOS, this)
+        this.identifier = utils.parseIdentifier(languageLOS)
         this.level = languageLOS?.specifies?.learningOpportunityInstance?.resultLabel
     }
 }
@@ -79,7 +96,9 @@ class ForeignLanguage {
 class Examination {
     constructor(examLOS){
         utils.multiTagParser("title", "xml:lang", examLOS, this)
-        this.components = this.addComponents(examLOS.hasPart)
+        this.identifier = utils.parseIdentifier(examLOS)
+        this.totalScore = examLOS?.specifies?.learningOpportunityInstance?.credit?.value
+        this.hasPart = this.addComponents(examLOS.hasPart)
     } 
     addComponents(components){
         let res = []
@@ -93,22 +112,28 @@ class Examination {
 class ExaminationComponent {
     constructor(componentLOS){
         // dont need title if we have type
-        //utils.parseLangText("title", componentLOS, this)
-        let title = componentLOS?.title?._
-        this.type = title.split(" ")[2]
-        this.score = componentLOS?.specifies?.learningOpportunityInstance?.credit?.value
+        this.title = componentLOS?.title?._
+        this.type = this.title.split(" ")[2]
+        this.grade = componentLOS?.specifies?.learningOpportunityInstance?.credit?.value
     }
 }
 
 function handleAchievements(parts){
     let res = []
+
+    // qualification phase
     let qPhaseSpec = parts[0].learningOpportunitySpecification
     let learningAchievements = qPhaseSpec.hasPart.map(element => new Module(element.learningOpportunitySpecification));
     const qPhaseScore = qPhaseSpec?.specifies?.learningOpportunityInstance?.credit?.value
     const qPhase = {
         totalScore: qPhaseScore,
-        courses: learningAchievements
+        hasPart: learningAchievements,
+        specifiedBy: [{
+            learningOpportunityType: qPhaseSpec.type,
+            totalScore : qPhaseScore
+        }]  
     }
+    utils.multiTagParser("title", "xml:lang", qPhaseSpec, this)
     res.push({qualificationPhase : qPhase})
 
 

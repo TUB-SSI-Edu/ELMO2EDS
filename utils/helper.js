@@ -16,6 +16,10 @@ function multiTagParser(tag, attribute, src, target){
         target[tag] = src[tag]
         return
     }
+    if (assertArray(src[tag]).length == 1){
+        target[tag] = src[tag]?._
+        return
+    }
     for (const instance of assertArray(src[tag])) {
         target[tag+instance?.$[attribute]?.toUpperCase()] = instance?._;
     }
