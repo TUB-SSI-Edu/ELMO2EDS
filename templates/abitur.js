@@ -1,32 +1,17 @@
 const utils = require('../utils/helper')
+const base  = require('./_baseTemplate')
 
 const keywords = ["abitur"]
 
-class Issuer {
+class Issuer extends base.IssuerStub{
     constructor(issuer, levels){
-            this.url = issuer.url;
-            this.country = issuer.country;
-            utils.multiTagParser("title", "xml:lang", issuer, this);
-            utils.multiTagParser("description", "xml:lang", issuer, this);
-            // issuer id
-            this. identifier = utils.parseIdentifier(issuer);
-            // levels
-            for (const level of utils.assertArray(levels)) {
-                this["level"+level.type.toUpperCase()] = level.value
-            }
+        super(issuer, levels)
     }
 }
 
-class CredentialSubject {
+class CredentialSubject extends base.CredentialSubjectStub{
     constructor(learner){
-        this.givenName = learner.givenNames
-        this.familyName = learner.familyName
-        this.fullName = this.givenName +" "+this.familyName
-        this.citizenship = learner.citizenship
-        this.bday = learner.bday
-        this.placeOfBirth = learner.placeOfBirth
-        this.gender = learner.gender
-        this.achieved = []
+        super(learner)
     }
 
     addDegree(learnerLOS, credits) {
@@ -138,7 +123,7 @@ function handleAchievements(parts){
 
 
     let examsSpec = parts[1].learningOpportunitySpecification
-    let examsParts = examsSpec.hasPart.map(element => new Examination(element.learningOpportunitySpecification));
+    let examsParts = examsSpec?.hasPart?.map(element => new Examination(element.learningOpportunitySpecification));
     const examsScore = examsSpec?.specifies?.learningOpportunityInstance?.credit?.value
     const exams = {
         totalScore: examsScore,
@@ -146,8 +131,8 @@ function handleAchievements(parts){
     }
     res.push({finalExaminations : exams})
 
-    let foreignLangSpec = parts[2].learningOpportunitySpecification
-    const foreignLang = foreignLangSpec.hasPart.map(element => new ForeignLanguage(element.learningOpportunitySpecification));
+    let foreignLangSpec = parts[2]?.learningOpportunitySpecification
+    const foreignLang = foreignLangSpec?.hasPart?.map(element => new ForeignLanguage(element.learningOpportunitySpecification));
     res.push({foreignLanguages : foreignLang})
     return res
 }

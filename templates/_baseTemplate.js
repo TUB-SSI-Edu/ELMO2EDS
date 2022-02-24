@@ -3,24 +3,33 @@ const utils = require('../utils/helper')
 
 const keywords = ["diploma"]
 
-class Issuer {
+class IssuerStub {
     constructor(issuer, levels){
+        utils.parseIdentifier(issuer)
         this.url = issuer.url;
         this.country = issuer.country;
+
+        utils.multiTagParser("title", "xml:lang", issuer, this)
+        utils.multiTagParser("description", "xml:lang", issuer, this)
+
+        // levels
+        for (const level of utils.assertArray(levels)) {
+            this["level"+level.type.toUpperCase()] = level.value
+        }
     }
 }
 
-class CredentialSubject {
+class CredentialSubjectStub {
     constructor(learner){
-        utils.multiTagParser('identifier', 'type', learner, this);
-        this.firstName = learner.givenNames;
-        this.familyName = learner.familyName;
+        utils.parseIdentifier(learner)
+        this.givenName = learner.givenNames
+        this.familyName = learner.familyName
+        this.fullName = this.givenName +" "+this.familyName
         this.citizenship = learner.citizenship;
         this.dateOfBirth = learner.bday;
         this.placeOfBirth = learner.placeOfBirth;
         this.gender = learner.gender;
-        this.currentAddress = learner.currentAddress;
-        this.degree = {}
+        this.achieved = []
     }
 
     addDegree(learnerLOS, credits) {
@@ -52,5 +61,5 @@ function handleExtras(elmo){
 
 // TDOD: extra classes
 
-module.exports = {Issuer, CredentialSubject, handleAchievements, keywords}
+module.exports = {IssuerStub, CredentialSubjectStub, handleAchievements, keywords}
 

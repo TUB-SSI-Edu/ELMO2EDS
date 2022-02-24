@@ -1,36 +1,19 @@
 
 // some usefull helper function you might want to use
 const utils = require('../utils/helper')
+const base = require('./_baseTemplate')
 
 const keywords = ["transcript of records", "bachelor", "master"]
 
-class Issuer {
+class Issuer extends base.IssuerStub{
     constructor(issuer, levels){
-        this.url = issuer.url;
-        this.country = issuer.country;
-
-        utils.multiTagParser("title", "xml:lang", issuer, this)
-        utils.multiTagParser("description", "xml:lang", issuer, this)
-        utils.multiTagParser("identifier", "type", issuer, this)
-
-        // levels
-        for (const level of utils.assertArray(levels)) {
-            this["level"+level.type.toUpperCase()] = level.value
-        }
+        super(issuer, levels)
     }
 }
 
-class CredentialSubject {
+class CredentialSubject extends base.CredentialSubjectStub{
     constructor(learner){
-        this.givenName = learner.givenNames
-        this.familyName = learner.familyName
-        this.fullName = this.givenName +" "+this.familyName
-        this.citizenship = learner.citizenship
-        this.dateOfBirth = learner.bday
-        this.placeOfBirth = learner.placeOfBirth
-        this.gender = learner.gender
-        utils.multiTagParser("identifier", "type", learner, this)
-        this.achieved = []
+        super(learner)
     }
 
     addDegree(learnerLOS, credits) {
