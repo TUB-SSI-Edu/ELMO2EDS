@@ -54,7 +54,6 @@ function validateTemplate(filename, requirements){
 
 // maybe use xPath query for XML package instead of hardcoding every path
 function parseCredential(xml){
-    console.debug(xml)
     const elmo = xml.elmo
     const LOS = elmo.report.learningOpportunitySpecification
     const LOI = LOS.specifies.learningOpportunityInstance

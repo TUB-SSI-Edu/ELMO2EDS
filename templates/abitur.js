@@ -123,7 +123,7 @@ function handleAchievements(parts){
 
 
     let examsSpec = parts[1].learningOpportunitySpecification
-    let examsParts = examsSpec.hasPart.map(element => new Examination(element.learningOpportunitySpecification));
+    let examsParts = examsSpec?.hasPart?.map(element => new Examination(element.learningOpportunitySpecification));
     const examsScore = examsSpec?.specifies?.learningOpportunityInstance?.credit?.value
     const exams = {
         totalScore: examsScore,
@@ -131,8 +131,8 @@ function handleAchievements(parts){
     }
     res.push({finalExaminations : exams})
 
-    let foreignLangSpec = parts[2].learningOpportunitySpecification
-    const foreignLang = foreignLangSpec.hasPart.map(element => new ForeignLanguage(element.learningOpportunitySpecification));
+    let foreignLangSpec = parts[2]?.learningOpportunitySpecification
+    const foreignLang = foreignLangSpec?.hasPart?.map(element => new ForeignLanguage(element.learningOpportunitySpecification));
     res.push({foreignLanguages : foreignLang})
     return res
 }

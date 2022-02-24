@@ -42,7 +42,7 @@ function parseIdentifier(obj){
             value: el?._
         }
     })
-    console.log(obj, res)
+    if(res.length == 0){ return undefined}
     return res.length == 1 ? res[0] : res
 }
 
