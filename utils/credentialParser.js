@@ -19,7 +19,7 @@ function loadTemplates(){
   const normalizedPath = require("path").join(__dirname, "../templates");
 
   require("fs").readdirSync(normalizedPath).forEach(function(file) {
-    if (!validateTemplate(file, requiredTemplateProperties) || file[0] == "_") {
+    if (file[0] == "_" || !validateTemplate(file, requiredTemplateProperties)) {
       return
     }
     console.log("found template:", file)
