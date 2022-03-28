@@ -19,19 +19,13 @@ function loadTemplates() {
   let templateDict = {};
   const normalizedPath = require("path").join(__dirname, "../templates");
 
-  require("fs")
-    .readdirSync(normalizedPath)
-    .forEach(function (file) {
-      if (
-        !validateTemplate(file, requiredTemplateProperties) ||
-        file[0] == "_"
-      ) {
-        return;
-      }
-      console.log("found template:", file);
-      require("../templates/" + file).keywords.forEach((keyw) => {
-        templateDict[keyw.toLowerCase()] = file;
-      });
+  require("fs").readdirSync(normalizedPath).forEach(function(file) {
+    if (file[0] == "_" || !validateTemplate(file, requiredTemplateProperties)) {
+      return
+    }
+    console.log("found template:", file)
+    require("../templates/" + file).keywords.forEach((keyw) => {
+      templateDict[keyw.toLowerCase()] = file
     });
   return templateDict;
 }
