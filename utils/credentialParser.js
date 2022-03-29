@@ -27,8 +27,9 @@ function loadTemplates() {
     require("../templates/" + file).keywords.forEach((keyw) => {
       templateDict[keyw.toLowerCase()] = file
     });
+  })
   return templateDict;
-}
+  }
 
 function getDocTypes(potentialTypeTags) {
   return potentialTypeTags.reduce((found, el) => {
