@@ -1,3 +1,12 @@
+
+// on startup look for templates
+const templateDict = loadTemplates();
+
+// path to mockCredential - later maybe dynmaicly created
+const mockCredentialPath = "./mockCredential.json";
+
+// defines properties that are required to validate a template. 
+// If these are not found in a template, a warning is given.
 // reqired property : test function
 const requiredTemplateProperties = {
   keywords: (obj) => {
@@ -8,21 +17,18 @@ const requiredTemplateProperties = {
   handleAchievements: (obj) => typeof obj == "function",
 };
 
-// on startup
-const templateDict = loadTemplates();
 
-// path to mockCredential - later maybe dynmaicly created
-const mockCredentialPath = "./mockCredential.json";
-
-// gather keywords from all templates
+// gather keywords from all templates in directory and validate them
 function loadTemplates() {
   let templateDict = {};
   const normalizedPath = require("path").join(__dirname, "../templates");
 
   require("fs").readdirSync(normalizedPath).forEach(function(file) {
+    // file is skipped if not validated or name starts with underscore
     if (file[0] == "_" || !validateTemplate(file, requiredTemplateProperties)) {
       return
     }
+    // else collect keywords
     console.log("found template:", file)
     require("../templates/" + file).keywords.forEach((keyw) => {
       templateDict[keyw.toLowerCase()] = file
@@ -31,16 +37,18 @@ function loadTemplates() {
   return templateDict;
   }
 
+// check if any of the collected keyword is present in certain areas of the document
+// return array of the template filenames that could be applied based on found keywords
 function getDocTypes(potentialTypeTags) {
   return potentialTypeTags.reduce((found, el) => {
     if (el) el = el.toLowerCase();
     // if key is known and not already in list -> add it
-    return el in templateDict && !found.includes(templateDict[el])
-      ? found.concat([templateDict[el]])
+    return el in templateDict && !found.includes(templateDict[el]) ? found.concat([templateDict[el]])
       : found;
   }, []);
 }
-
++
+// validadtes tempalte - checks if all required properties and funciton are present
 function validateTemplate(filename, requirements) {
   const template = require("../templates/" + filename);
   for (const [prop, test] of Object.entries(requirements)) {
@@ -54,13 +62,19 @@ function validateTemplate(filename, requirements) {
 }
 
 // maybe use xPath query for XML package instead of hardcoding every path
-function parseCredential(xml, mode = PLAIN) {
+// |--------------------|
+// | main parsing logic |
+// |--------------------|
+function parseCredential(xml, mode = AUTO) {
+  // for shorter access to key properties in code
   const elmo = xml.elmo;
   const LOS = elmo.report.learningOpportunitySpecification;
   const LOI = LOS.specifies.learningOpportunityInstance;
+  // load mock credential to add data to
   let cred = require(mockCredentialPath);
   let template;
 
+  //  if mode not PLAIN look for tempalte types
   if (mode != PLAIN) {
     // places to check for keywords
     let potentialTypeTags = [
@@ -72,6 +86,7 @@ function parseCredential(xml, mode = PLAIN) {
     // check if it is a "known document"
     const docTypes = getDocTypes(potentialTypeTags);
     console.log("potential templates:", docTypes, "; using first entry");
+    // if fitting tempaltes found, use first (arbitrary)
     template =
       docTypes.length > 0 ? require("../templates/" + docTypes[0]) : undefined;
 
@@ -80,11 +95,13 @@ function parseCredential(xml, mode = PLAIN) {
       console.log("no fitting template found - defaulting to plain mode");
     }
   }
-
+  // if no template found, use plain conversion
   template ||= require("../templates/_plainConversion.js");
 
+  // fetch parsing function depending on conversion mode
   let converterDetails = converterMode(mode);
 
+  // data that gets parsed, regardless of wich template is used
   // ISSUER
   let issuerData = new template.Issuer(elmo.report.issuer, LOI.level);
   cred.issuer = Object.assign(cred.issuer, issuerData);
@@ -98,12 +115,15 @@ function parseCredential(xml, mode = PLAIN) {
   subjectData.addDegree(LOS, LOI.credit);
   cred.credentialSubject = Object.assign(cred.credentialSubject, subjectData);
 
+  // parse details
   cred = converterDetails(elmo, cred, template)
 
   console.log(cred);
+  // return finished credentail to be send of
   return cred;
 }
 
+// returns function that parses details depending on conversion mode
 function converterMode(mode) {
   switch (mode) {
     case AUTO:

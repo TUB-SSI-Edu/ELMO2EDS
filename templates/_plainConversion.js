@@ -24,7 +24,7 @@ class CredentialSubject extends base.CredentialSubjectStub {
 
 function handleAchievements(elmo) {
   let root = [];
-  for (report of elmo.report) {
+  for (let report of elmo.report) {
     let learningA = new LearningAchievement(
       report?.learningOpportunitySpecification
     );
@@ -53,8 +53,8 @@ class LearningAchievement {
     // academic term
     // engagement hours
     // status
-    //gradingSchemeLocalId
-    //gradingScheme
+    // gradingSchemeLocalId
+    // gradingScheme
   }
 }
 
