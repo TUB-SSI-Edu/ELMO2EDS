@@ -1,7 +1,4 @@
 
-// on startup look for templates
-const templateDict = loadTemplates();
-
 // path to mockCredential - later maybe dynmaicly created
 const mockCredentialPath = "./mockCredential.json";
 
@@ -17,6 +14,21 @@ const requiredTemplateProperties = {
   handleAchievements: (obj) => typeof obj == "function",
 };
 
+// on startup look for templates
+const templateDict = loadTemplates();
+
+// validadtes tempalte - checks if all required properties and funciton are present
+function validateTemplate(filename, requirements) {
+  const template = require("../templates/" + filename);
+  for (const [prop, test] of Object.entries(requirements)) {
+    // if prop not existing or if it fails the test
+    if (template[prop] == undefined || !test(template[prop])) {
+      console.warn("TEMPLATE NOT VALID! :", filename);
+      return false;
+    }
+  }
+  return true;
+}
 
 // gather keywords from all templates in directory and validate them
 function loadTemplates() {
@@ -25,7 +37,7 @@ function loadTemplates() {
 
   require("fs").readdirSync(normalizedPath).forEach(function(file) {
     // file is skipped if not validated or name starts with underscore
-    if (file[0] == "_" || !validateTemplate(file, requiredTemplateProperties)) {
+    if (file[0] == "_" || file[0] == "R" || !validateTemplate(file, requiredTemplateProperties)) {
       return
     }
     // else collect keywords
@@ -47,19 +59,7 @@ function getDocTypes(potentialTypeTags) {
       : found;
   }, []);
 }
-+
-// validadtes tempalte - checks if all required properties and funciton are present
-function validateTemplate(filename, requirements) {
-  const template = require("../templates/" + filename);
-  for (const [prop, test] of Object.entries(requirements)) {
-    // if prop not existing or if it fails the test
-    if (template[prop] == undefined || !test(template[prop])) {
-      console.warn("TEMPLATE NOT VALID! :", filename);
-      return false;
-    }
-  }
-  return true;
-}
+
 
 // maybe use xPath query for XML package instead of hardcoding every path
 // |--------------------|
@@ -75,7 +75,7 @@ function parseCredential(xml, mode = AUTO) {
   let template;
 
   //  if mode not PLAIN look for tempalte types
-  if (mode != PLAIN) {
+  if (mode == AUTO) {
     // places to check for keywords
     let potentialTypeTags = [
       LOS.title?._,
@@ -143,7 +143,7 @@ function converterMode(mode) {
 
         return cred
       }
-
+    // PLAIN and DEFAULT 
     default:
       return function(elmo, cred, template){
         let root = template.handleAchievements(elmo)
