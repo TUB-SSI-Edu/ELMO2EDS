@@ -32,6 +32,7 @@ router.post("/*", xmlparser({
     normalizeTags: false, 
     explicitArray: false
     }),(req,res,next) => {
+        console.log(req.body)
     if (utils.isEmpty(req.body)){
         res.status(400).send("no file recieved - please post valid xml file")
     } else {

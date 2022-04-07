@@ -65,7 +65,7 @@ function getDocTypes(potentialTypeTags) {
 // |--------------------|
 // | main parsing logic |
 // |--------------------|
-function parseCredential(xml, mode = AUTO) {
+function parseCredential(xml, mode = "AUTO") {
   // for shorter access to key properties in code
   const elmo = xml.elmo;
   const LOS = elmo.report.learningOpportunitySpecification;
@@ -75,7 +75,7 @@ function parseCredential(xml, mode = AUTO) {
   let template;
 
   //  if mode not PLAIN look for tempalte types
-  if (mode == AUTO) {
+  if (mode == "AUTO") {
     // places to check for keywords
     let potentialTypeTags = [
       LOS.title?._,
@@ -91,7 +91,7 @@ function parseCredential(xml, mode = AUTO) {
       docTypes.length > 0 ? require("../templates/" + docTypes[0]) : undefined;
 
     if (docTypes.length == 0) {
-      mode = PLAIN;
+      mode = "PLAIN";
       console.log("no fitting template found - defaulting to plain mode");
     }
   }
@@ -126,7 +126,7 @@ function parseCredential(xml, mode = AUTO) {
 // returns function that parses details depending on conversion mode
 function converterMode(mode) {
   switch (mode) {
-    case AUTO:
+    case "AUTO":
       return function(elmo, cred, template){
 
         const LOS = elmo.report.learningOpportunitySpecification;
