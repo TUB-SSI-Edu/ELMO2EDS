@@ -45,15 +45,36 @@ example response:
 ```
 </details>
 
+
+The overview over the flow of the application can be found [here](#typical-flow-of-programm)
 ---
 
-##### Table of Contents
-[History](#first-progress-using-golang-and-switch-to-nodejs)  
-[Prerequisites](#prerequisites-1) 
-[Building and Running](#building-and-running)
-[API](#api-wip)
-[Additional Details](#additional-details)
-[Known Problems](#problems)
+## Table of Contents
+
+- [elmo-converter](#elmo-converter)
+  - [The overview over the flow of the application can be found here](#the-overview-over-the-flow-of-the-application-can-be-found-here)
+  - [Table of Contents](#table-of-contents)
+    - [First Progress using Golang and switch to NodeJS](#first-progress-using-golang-and-switch-to-nodejs)
+    - [Building and Execution](#building-and-execution)
+      - [Prerequisites](#prerequisites)
+      - [Building](#building)
+      - [Running](#running)
+    - [Switch from Golang to NodeJS](#switch-from-golang-to-nodejs)
+    - [Prerequisites](#prerequisites-1)
+    - [Building and Running](#building-and-running)
+  - [API (wip)](#api-wip)
+  - [Additional details](#additional-details)
+    - [Input file](#input-file)
+    - [Output file](#output-file)
+    - [Custom templates](#custom-templates)
+      - [Keywords (required)](#keywords-required)
+      - [Extras (optional)](#extras-optional)
+    - [Testing](#testing)
+    - [Typical flow of programm](#typical-flow-of-programm)
+  - [Known problems](#known-problems)
+    - [optional quality of life features](#optional-quality-of-life-features)
+
+
 
 ---
 
@@ -226,7 +247,7 @@ Required components are\\
 The document is search for these Keywords and if a match is found your template is used.
 Use this to determine on wich kinds of documents your template should be applied.
 
-#### Extras (optoinal)
+#### Extras (optional)
 
 You can extract additional information from the given file wich isnt categorized by the default classes.
 You get the raw JavaScript object converted from the xml file and should return an Object that has alle the parsed additional information you need in xyour credential. The Properties are copied onto the final credential response.
@@ -237,7 +258,18 @@ Testing is done with [jest](https://jestjs.io/) wich supplies easy and straight 
 
 All tests can be executed by running `npm test` in the `node-version` directory.
 
-## Problems
+### Typical flow of programm
+The XML file that is in the body of the http request is automaticly converted into a JS object with [xml2js](https://www.npmjs.com/package/xml2js) in [routes/fromXML.js](../routes/fromXML.js) and passed into the formating function : `credentalParser()`.
+
+[Here](/utils/credentialParser.js)
+the object we look for features of the EMLO data tha would allow a classification for example certain keywords like "transcript of records".
+If a fitting tempalte is found it can be applied, if not, the plain conversion takes place.
+
+In the templates we map parts of the data we need to other keywords of our new credential and conctruct our resulting js object.
+
+In the response, this object is than converted to JSON and send together with a status code.
+
+## Known problems
 
 Not all data required for a verifiable credential exists in the input file. This data has to be collected to successfully convert to that specific format.
 

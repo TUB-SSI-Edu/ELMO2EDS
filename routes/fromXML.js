@@ -12,10 +12,13 @@ const parseOptions = {
     explicitArray: false,
     trim: true
 }
+
+// parse XML in body to js object
 const XMLParser = new xml2js.Parser(parseOptions);
 
 const pathToLocalFiles = "./complementaryFiles/"
 
+// if not accessed via api
 router.get('/', (req, res, next) => {
     res.send("please post xml file to /api/convert")
 })
@@ -29,6 +32,7 @@ router.post("/*", xmlparser({
     normalizeTags: false, 
     explicitArray: false
     }),(req,res,next) => {
+        console.log(req.body)
     if (utils.isEmpty(req.body)){
         res.status(400).send("no file recieved - please post valid xml file")
     } else {
@@ -36,12 +40,12 @@ router.post("/*", xmlparser({
     }
 })
 
-
+// just the raw conversion to JS-> JSON no formatting applied
 router.post('/convert/', (req, res, next) => {
     res.send(JSON.stringify(req.body , null, 4))
 })
 
-
+// same as above but with local file
 router.get('/convert/:fileName', (req, res, next) => {
     let text = fs.readFileSync(pathToLocalFiles + req.params.fileName + ".xml", "utf-8") 
 
@@ -57,6 +61,7 @@ router.get('/convert/:fileName', (req, res, next) => {
     })
 })
 
+// converts and applies formatting. This is the main usecase
 router.post('/convert/verifiableCredential', (req, res, next) => {
     if(!req.body.hasOwnProperty('elmo')){
         res.status(400).send("Could not process your file. Please make sure it  is in a valid elmo/emrex format and the http header for 'Content-Type' is set to 'application/xml'.")
@@ -65,7 +70,7 @@ router.post('/convert/verifiableCredential', (req, res, next) => {
     res.send(JSON.stringify(cred, null, 4))
 })
 
-// reads local file :filename and uses that as input
+// same as above but with local file instead of using file in request body
 router.get("/convert/verifiableCredential/:fileName", (req, res, next) => {
     let text = fs.readFileSync(pathToLocalFiles + req.params.fileName + ".xml", "utf-8") 
 
@@ -80,7 +85,5 @@ router.get("/convert/verifiableCredential/:fileName", (req, res, next) => {
     })
 })
 
-
-// convertsion with XPath - to replace the current parsing when done
 
 module.exports = router;
