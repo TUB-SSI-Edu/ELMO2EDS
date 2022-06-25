@@ -198,7 +198,7 @@ This will start the server on http://localhost:8081/.
 Test with:
 
 ```sh
-curl -d @test.xml -H "Content-Type: application/xml" http://localhost:8081/api/xml/convert/
+curl -d @./__tests__/elmoCredentials/Baschenborn_Thor.xml -H "Content-Type: application/xml" http://130.149.223.146:8081/api/xml/convert/verifiableCredential
 ```
 
 ## API (wip)

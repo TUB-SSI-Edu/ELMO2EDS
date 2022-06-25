@@ -1,0 +1,1286 @@
+ <elmo xmlns="https://github.com/emrex-eu/elmo-schemas/tree/v1" xmlns:ns2="https://github.com/erasmus-without-paper/ewp-specs-types-address/tree/stable-v1" xmlns:ns3="http://www.w3.org/2000/09/xmldsig#" xmlns:ns4="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd" xmlns:tep="http://www.tep.de">
+  <generatedDate>2020-05-28T13:51:14.573Z</generatedDate>
+  <learner>
+    <citizenship>DE</citizenship>
+    <givenNames>Baschenborn</givenNames>
+    <familyName>Thor</familyName>
+    <bday>1999-12-30</bday>
+    <placeOfBirth>Berlin</placeOfBirth>
+    <gender>1</gender>
+  </learner>
+  <report>
+    <issuer>
+      <country>DE</country>
+      <identifier type="schac">DE NRW 168890</identifier>
+      <title xml:lang="de">Test Gymnasium </title>
+      <url>https://www.placeholder.de/</url>
+    </issuer>
+    <learningOpportunitySpecification>
+      <title xml:lang="en">Abitur</title>
+      <type>Degree Programme</type>
+      <description xml:lang="en">higher education entrance qualification</description>
+      <specifies>
+        <learningOpportunityInstance>
+          <credit>
+            <scheme>ects</scheme>
+            <value>3.5</value>
+          </credit>
+          <credit>
+            <scheme>gradingSchemeAbitur</scheme>
+            <value>385</value>
+          </credit>
+          <level>
+            <type>EQF</type>
+            <description xml:lang="en">European Qualification Framework</description>
+            <value>4</value>
+          </level>
+        </learningOpportunityInstance>
+      </specifies>
+      <hasPart>
+        <learningOpportunitySpecification>
+          <title xml:lang="en">Qualification Phase</title>
+          <type>Module</type>
+          <specifies>
+            <learningOpportunityInstance>
+              <credit>
+                <scheme>gradingSchemeAbitur</scheme>
+                <value>284</value>
+              </credit>
+            </learningOpportunityInstance>
+          </specifies>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Mathematik</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Mathematik 1st semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">1st semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>4</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Mathematik 2nd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">2nd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>4</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Mathematik 3rd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">3rd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>5</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Mathematik 4th semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">4th semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>5</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Kath. Religionslehre</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Kath. Religionslehre 1st semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">1st semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>5</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Kath. Religionslehre 2nd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">2nd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>10</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Kath. Religionslehre 3rd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">3rd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>0</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Kath. Religionslehre 4th semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">4th semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>0</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Erziehungswissenschaft</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Erziehungswissenschaft 1st semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">1st semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>12</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Erziehungswissenschaft 2nd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">2nd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>8</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Erziehungswissenschaft 3rd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">3rd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>8</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Erziehungswissenschaft 4th semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">4th semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>7</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Sport</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Sport 1st semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">1st semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>12</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Sport 2nd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">2nd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>12</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Sport 3rd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">3rd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>8</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Sport 4th semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">4th semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>8</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Physik</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Physik 1st semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">1st semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>5</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Physik 2nd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">2nd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>6</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Physik 3rd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">3rd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>7</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Physik 4th semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">4th semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>7</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Biologie</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Biologie 1st semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">1st semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>4</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Biologie 2nd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">2nd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>5</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Biologie 3rd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">3rd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>8</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Biologie 4th semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">4th semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>7</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Kunsterziehung</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Kunsterziehung 1st semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">1st semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>5</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Kunsterziehung 2nd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">2nd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>6</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Kunsterziehung 3rd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">3rd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>0</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Kunsterziehung 4th semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">4th semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>0</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Englisch</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Englisch 1st semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">1st semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>5</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Englisch 2nd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">2nd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>8</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Englisch 3rd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">3rd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>7</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Englisch 4th semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">4th semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>6</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Deutsch</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Deutsch 1st semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">1st semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>5</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Deutsch 2nd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">2nd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>5</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Deutsch 3rd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">3rd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>7</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Deutsch 4th semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">4th semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>5</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Sozialwissenschaften</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Sozialwissenschaften 1st semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">1st semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>0</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Sozialwissenschaften 2nd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">2nd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>0</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Sozialwissenschaften 3rd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">3rd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>10</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Sozialwissenschaften 4th semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">4th semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>5</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Geschichte</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Geschichte 1st semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">1st semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>0</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Geschichte 2nd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">2nd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>0</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Geschichte 3rd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">3rd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>10</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Geschichte 4th semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">4th semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>7</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Erdkunde</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Erdkunde 1st semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">1st semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>6</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Erdkunde 2nd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">2nd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>9</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Erdkunde 3rd semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">3rd semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>7</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Erdkunde 4th semester</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <academicTerm>
+                        <title xml:lang="en">4th semester</title>
+                        <start>2019-09-01</start>
+                        <end>2020-06-01</end>
+                      </academicTerm>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>4</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+        </learningOpportunitySpecification>
+      </hasPart>
+      <hasPart>
+        <learningOpportunitySpecification>
+          <title xml:lang="en">Examinations</title>
+          <type>Module</type>
+          <specifies>
+            <learningOpportunityInstance>
+              <credit>
+                <scheme>gradingSchemeAbitur</scheme>
+                <value>101</value>
+              </credit>
+            </learningOpportunityInstance>
+          </specifies>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Erziehungswissenschaft</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Erziehungswissenschaft examination oral</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>11</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Erziehungswissenschaft examination written</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>8</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Physik</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Physik examination oral</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>3</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Englisch</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Englisch examination oral</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>7</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Englisch examination written</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>8</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Deutsch</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance></learningOpportunityInstance>
+              </specifies>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Deutsch examination oral</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>0</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+              <hasPart>
+                <learningOpportunitySpecification>
+                  <title xml:lang="en">Deutsch examination written</title>
+                  <type>Course</type>
+                  <specifies>
+                    <learningOpportunityInstance>
+                      <credit>
+                        <scheme>gradingSchemeAbitur</scheme>
+                        <value>1</value>
+                      </credit>
+                    </learningOpportunityInstance>
+                  </specifies>
+                </learningOpportunitySpecification>
+              </hasPart>
+            </learningOpportunitySpecification>
+          </hasPart>
+        </learningOpportunitySpecification>
+      </hasPart>
+      <hasPart>
+        <learningOpportunitySpecification>
+          <title xml:lang="en">Foreign languages</title>
+          <type>Module</type>
+          <specifies>
+            <learningOpportunityInstance></learningOpportunityInstance>
+          </specifies>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Französisch</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance>
+                  <resultLabel>B1</resultLabel>
+                </learningOpportunityInstance>
+              </specifies>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Englisch</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance>
+                  <resultLabel>B2/C1</resultLabel>
+                </learningOpportunityInstance>
+              </specifies>
+            </learningOpportunitySpecification>
+          </hasPart>
+        </learningOpportunitySpecification>
+      </hasPart>
+      <hasPart>
+        <learningOpportunitySpecification>
+          <title xml:lang="en">Foreign languages</title>
+          <type>Module</type>
+          <specifies>
+            <learningOpportunityInstance></learningOpportunityInstance>
+          </specifies>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Französisch</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance>
+                  <resultLabel>B1</resultLabel>
+                </learningOpportunityInstance>
+              </specifies>
+            </learningOpportunitySpecification>
+          </hasPart>
+          <hasPart>
+            <learningOpportunitySpecification>
+              <title xml:lang="en">Englisch</title>
+              <type>Course</type>
+              <specifies>
+                <learningOpportunityInstance>
+                  <resultLabel>B2/C1</resultLabel>
+                </learningOpportunityInstance>
+              </specifies>
+            </learningOpportunitySpecification>
+          </hasPart>
+        </learningOpportunitySpecification>
+      </hasPart>
+    </learningOpportunitySpecification>
+    <issueDate>2019-07-05T00:00:00.000Z</issueDate>
+  </report>
+<extension><tep:address>0xe63bcf07491f32efcb55d9a1ddd6d6d</tep:address></extension><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></CanonicalizationMethod><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"></SignatureMethod><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></Transform></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>jgPXCNecRtsueoDYIEekaqyAC1MSgZE+pxE=</DigestValue></Reference></SignedInfo><SignatureValue>PGntNF1ervsqgaKJfTAUeawqOA9SedoYEXyNGPdnsiZ33wbshfRTCq3vppLUnDQsx/sXZRBDWUMGYaBbHNXGDVDKG7RHJloAxT6jCNkJkWoDUxy2RKulX/317k33RJYBcx3mOrNy3KaG5oCRP6J0E70QW0ZzjcehXR8nQlkBATQd4crmnKyQKGCVfpokEnIN6tFH8W98iir7yLcUrFAlXQ1Bmv2jwN6+2s20bgX1V2eSBjqKZCVk4KOCzoTSam8ekHeokBZyLMTWP2rahSnrOs20/VrRS7nE19iv+9WxRvjSjRvQiFw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>CN=Trusted Educational Platform,OU=Bundesdruckerei,O=Federal Ministry of Education and Research,L=Berlin,ST=Deutschland,C=DE</X509SubjectName><X509Certificate>MIIDnzCCAocCAhI2MA0GCSqGSIb3DQEBCwUAMH8xCzAJBgNVBAYTAkhSMRAwDgYDVQQIDAdDcm9hdGlhMQ4wDAYDVQQHDAVTcGxpdDEMMAoGA1UECgwDQkRSMQ8wDQYDVQQLDAZNYXVyZXIxEDAOBgNVBAMMB1Rlc3QgQ0ExHTAbBgkqhkiG9w0BCQEWDmFkbWluQHRlc3QuY29tMB4XDTE5MTEyODEyNTcwOVoXDTIyMDgyNDEyNTcwOVowgaoxCzAJBgNVBAYTAkRFMRQwEgYDVQQIEwtEZXV0c2NobGFuZDEPMA0GA1UEBxMGQmVybGluMTMwMQYDVQQKEypGZWRlcmFsIE1pbmlzdHJ5IG9mIEVkdWNhdGlvbiBhbmQgUmVzZWFyY2gxGDAWBgNVBAsTD0J1bmRlc2RydWNrZXJlaTElMCMGA1UEAxMcVHJ1c3RlZCBFZHVjYXRpb25hbCBQbGF0Zm9ybTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAIcAwKtENTUn+wL8epBETlxwGC2/YyO448GXmHMF+j+rwBpDZIj09jXa48j8KJBstNNSxUXJxOx1Lin+raZnZtT5CSdlzw8hVy1mQG5lLu/3t/s2VDPQWFhGZJNI5N4T9CL9GLSX6E/eMV9tLEUoJoZm08frcuvFtwQyWalmy5nCvtw9gQHOtql5YQPMS3Q5SDwc5LO3Paf/DhTzWV3wnIxbTXJhdjZa+poQgVUo9BYNHwMvOqNx+Fdk2o9Os2MURyLiXKm1xotJKIltDSNpW/iFEoSwu/ZATfPJE17LR3YV/MVkioAFuGZZjrVbVZQktrR59EO2N00K60guBrFVIu0CAwEAATANBgkqhkiG9w0BAQsFAAOCAQEANbb6JtHMVMarqicEeEolp5azMd1nUrEtefYP3OMnI/p9nM1LO/EQ9gvLjSawmDwtHCTb230a7W8yucB6Ftqg3AO9G3krVzsCUh3LX2PBUPF1+/0R/+diRpMS7c2DZLEMEe4r1D0EbsEhk3+5dYcv1u52zNjewDSDBQRROcqDSO+HAHe2O1P11PR3CW0Z59+QSiTUkLOHDo430ecgQ/6z6WU86lDv4gxN5q3/ZWwyg6iHYasEzuruEi69w27FXY6/P7z8uJI5ci//d97Oy4o+9bfYPycYFN3dBegl8iNNJwivA9yJ3FKXYfq0czd22wFFATUROwqL6v1tgrcSP+cyTw==</X509Certificate></X509Data></KeyInfo></Signature></elmo>
